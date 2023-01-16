@@ -12,11 +12,15 @@ namespace Eateries.Infrastructure.Persistence.Contexts
     public class ApplicationDbContext : DbContext
     {
         private readonly ILoggerFactory _loggerFactory;
+        private readonly IDateTimeService _dateTime;
 
-        public ApplicationDbContext(ILoggerFactory loggerFactory)
+        public ApplicationDbContext(
+            ILoggerFactory loggerFactory,
+            IDateTimeService dateTime)
             : base()
         {
             this._loggerFactory = loggerFactory;
+            this._dateTime = dateTime;
         }
 
         public DbSet<Address> Addresses { get; set; }
@@ -30,13 +34,13 @@ namespace Eateries.Infrastructure.Persistence.Contexts
             {
                 switch (entry.State)
                 {
-                   /* case EntityState.Added:
+                    case EntityState.Added:
                         entry.Entity.Created = _dateTime.NowUtc;
                         break;
 
                     case EntityState.Modified:
                         entry.Entity.LastModified = _dateTime.NowUtc;
-                        break;*/
+                        break;
                 }
             }
             return base.SaveChangesAsync(cancellationToken);
@@ -44,10 +48,10 @@ namespace Eateries.Infrastructure.Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-           /* var _mockData = this.Database.GetService<IMockService>();
-            var seedPositions = _mockData.SeedPositions(1000);
-            builder.Entity<Position>().HasData(seedPositions);
-*/
+            /* var _mockData = this.Database.GetService<IMockService>();
+             var seedPositions = _mockData.SeedPositions(1000);
+             builder.Entity<Position>().HasData(seedPositions);
+ */
             base.OnModelCreating(builder);
         }
 
