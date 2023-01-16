@@ -11,9 +11,12 @@ namespace Eateries.Infrastructure.Persistence.Contexts
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext()
+        private readonly ILoggerFactory _loggerFactory;
+
+        public ApplicationDbContext(ILoggerFactory loggerFactory)
             : base()
         {
+            this._loggerFactory = loggerFactory;
         }
 
         public DbSet<Address> Addresses { get; set; }
@@ -51,7 +54,7 @@ namespace Eateries.Infrastructure.Persistence.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EateriesDb;Integrated Security=True;");
-            //optionsBuilder.UseLoggerFactory(_loggerFactory);
+            optionsBuilder.UseLoggerFactory(_loggerFactory);
         }
     }
 }
