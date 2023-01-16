@@ -1,5 +1,6 @@
 using Eateries.Infrastructure.Persistence;
 using Eateries.Infrastructure.Shared;
+using Eateries.WebApi.Extensions;
 using Serilog;
 
 try
@@ -14,10 +15,16 @@ try
     builder.Host.UseSerilog(Log.Logger);
     builder.Services.AddPersistenceInfrastructure(builder.Configuration);
     builder.Services.AddSharedInfrastructure(builder.Configuration);
-    builder.Services.AddControllers();
+    builder.Services.AddSwaggerGen();
+    builder.Services.AddControllerExtension();
+    // CORS
+    builder.Services.AddCorsExtension();
+    builder.Services.AddHealthChecks();
+    // API explorer
+    builder.Services.AddMvcCore()
+                    .AddApiExplorer();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
 
     var app = builder.Build();
 

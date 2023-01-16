@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Eateries.Infrastructure.Persistence\Eateries.Infrastructure.Persistence.csproj" />
     <ProjectReference Include="..\Eateries.Infrastructure.Shared\Eateries.Infrastructure.Shared.csproj" />
   </ItemGroup>
