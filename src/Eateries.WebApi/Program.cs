@@ -1,4 +1,5 @@
 using Eateries.Infrastructure.Persistence;
+using Eateries.Infrastructure.Shared;
 using Serilog;
 
 try
@@ -12,6 +13,7 @@ try
     .CreateLogger();
     builder.Host.UseSerilog(Log.Logger);
     builder.Services.AddPersistenceInfrastructure(builder.Configuration);
+    builder.Services.AddSharedInfrastructure(builder.Configuration);
     builder.Services.AddControllers();
     // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
     builder.Services.AddEndpointsApiExplorer();
