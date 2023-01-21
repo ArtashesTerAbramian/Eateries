@@ -1,4 +1,5 @@
 ﻿using Eateries.Application.Interfaces;
+using Eateries.Application.Interfaces.Repositories;
 //using Eateries.Application.Interfaces.Repositories;
 using Eateries.Infrastructure.Persistence.Contexts;
 using Eateries.Infrastructure.Persistence.Repositories;
@@ -27,7 +28,8 @@ namespace Eateries.Infrastructure.Persistence
 
             #region Repositories
 
-            // services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
+            services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
+            services.AddTransient<IAddressRepositoryAsync, AddressRepositoryAsync>();
             /* services.AddTransient<IPositionRepositoryAsync, PositionRepositoryAsync>();
              services.AddTransient<IEmployeeRepositoryAsync, EmployeeRepositoryAsync>();*/
 
