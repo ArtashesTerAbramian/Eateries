@@ -1,4 +1,5 @@
 ﻿using Eateries.Application.Features.Addresses.Commands;
+using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Eateries.Application.Interfaces.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,23 +11,16 @@ namespace Eateries.WebApi.Controllers.v1
     [ApiController]
     public class AddressController : BaseApiController
     {
-        private readonly IAddressRepositoryAsync _addressRepository;
-
-        public AddressController(IAddressRepositoryAsync addressRepository)
-        {
-            this._addressRepository = addressRepository;
-        }
         // GET: api/<AddressController>
-/*        [HttpGet]
-        public async Task<IEnumerable<string>> Get()
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] GetAddressQuery filter)
         {
-            var result = await _addressRepository.GetAllAsync();
-            return Ok("");
-        }*/
+            return Ok(await Mediator.Send(filter));
+        }
 
         // GET api/<AddressController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string Get(Guid id)
         {
             return "value";
         }
