@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Eateries.Application.Features.Addresses.Commands;
+using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Eateries.Application.Features.Employees.Queries.GetEmployees;
 //using Eateries.Application.Features.Positions.Commands.CreatePosition;
 using Eateries.Application.Features.Positions.Queries.GetPositions;
@@ -13,8 +14,8 @@ namespace Eateries.Application.Mappings
         {
             CreateMap<Position, GetPositionsViewModel>().ReverseMap();
             CreateMap<Employee, GetEmployeesViewModel>().ReverseMap();
-            //CreateMap<CreatePositionCommand, Address>();
             CreateMap<CreateAddressCommand, Address>();
+            CreateMap<Address, GetAddressViewModel>().ReverseMap();
         }
     }
 }
