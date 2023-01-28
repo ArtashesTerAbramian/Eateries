@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Eateries.Domain.Entities
 {
-    public class Cafe : Eateries
+    public class Cafe : Eatery
     {
 
     }

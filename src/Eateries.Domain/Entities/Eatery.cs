@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Eateries.Domain.Entities
 {
-    public abstract class Eateries : AuditableBaseEntity
+    public abstract class Eatery : AuditableBaseEntity
     {
         public string Name { get; set; }
         public EateryType? EateryType { get; set; }

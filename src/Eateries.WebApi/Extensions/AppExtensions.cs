@@ -1,4 +1,4 @@
-﻿//using Eateries.WebApi.Middlewares;
+﻿using Eateries.WebApi.Middlewares;
 using Microsoft.AspNetCore.Builder;
 
 namespace Eateries.WebApi.Extensions
@@ -16,7 +16,7 @@ namespace Eateries.WebApi.Extensions
 
         public static void UseErrorHandlingMiddleware(this IApplicationBuilder app)
         {
-            //app.UseMiddleware<ErrorHandlerMiddleware>();
+            app.UseMiddleware<ErrorHandlerMiddleware>();
         }
     }
 }

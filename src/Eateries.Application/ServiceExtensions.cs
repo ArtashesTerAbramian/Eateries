@@ -20,6 +20,7 @@ namespace Eateries.Application
             services.AddScoped<IDataShapeHelper<Position>, DataShapeHelper<Position>>();
             services.AddScoped<IDataShapeHelper<Employee>, DataShapeHelper<Employee>>();
             services.AddScoped<IDataShapeHelper<Address>, DataShapeHelper<Address>>();
+            services.AddScoped<IDataShapeHelper<Eatery>, DataShapeHelper<Eatery>>();
             services.AddScoped<IModelHelper, ModelHelper>();
             //services.AddScoped<IMockData, MockData>();
         }

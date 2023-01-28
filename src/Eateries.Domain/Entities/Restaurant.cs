@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Eateries.Domain.Entities
 {
-    public class Restaurant : Eateries
+    public class Restaurant : Eatery
     {
         public int? PlaceCount { get; set; }
         public int? ChairPrice { get; set; }

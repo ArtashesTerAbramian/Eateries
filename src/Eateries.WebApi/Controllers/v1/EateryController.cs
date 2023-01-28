@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Eateries.Application.Features.Eateryes.Commands;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -6,14 +7,14 @@ namespace Eateries.WebApi.Controllers.v1
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EateryController : ControllerBase
+    public class EateryController : BaseApiController
     {
         // GET: api/<EateryController>
-      /*  [HttpGet]
-        public async IEnumerable<string> Get()
-        {
-            return Ok(await )
-        }*/
+        /*  [HttpGet]
+          public async IEnumerable<string> Get()
+          {
+              return Ok(await )
+          }*/
 
         // GET api/<EateryController>/5
         [HttpGet("{id}")]
@@ -24,8 +25,10 @@ namespace Eateries.WebApi.Controllers.v1
 
         // POST api/<EateryController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] CreateEateryCommand value)
         {
+            var resp = await Mediator.Send(value);
+            return CreatedAtAction(nameof(Post), resp);
         }
 
         // PUT api/<EateryController>/5
