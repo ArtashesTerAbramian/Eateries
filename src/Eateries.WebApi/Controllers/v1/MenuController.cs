@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Eateries.Application.Features.Menues.Commands;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -6,7 +8,7 @@ namespace Eateries.WebApi.Controllers.v1
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MenuController : ControllerBase
+    public class MenuController : BaseApiController
     {
         // GET: api/<MenuController>
         [HttpGet]
@@ -24,8 +26,10 @@ namespace Eateries.WebApi.Controllers.v1
 
         // POST api/<MenuController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] CreateMenuCommand value)
         {
+            var resp = await Mediator.Send(value);
+            return CreatedAtAction(nameof(Post), resp);
         }
 
         // PUT api/<MenuController>/5

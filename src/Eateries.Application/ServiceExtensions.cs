@@ -18,7 +18,7 @@ namespace Eateries.Application
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             services.AddScoped<IDataShapeHelper<Address>, DataShapeHelper<Address>>();
-            services.AddScoped<IDataShapeHelper<Eatery>, DataShapeHelper<Eatery>>();
+            services.AddScoped<IDataShapeHelper<Menu>, DataShapeHelper<Menu>>();
             services.AddScoped<IModelHelper, ModelHelper>();
             //services.AddScoped<IMockData, MockData>();
         }
