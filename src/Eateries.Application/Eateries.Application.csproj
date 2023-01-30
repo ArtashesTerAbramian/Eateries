@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Eateryes\Queries\" />
+    <Folder Include="Features\Menues\Queries\" />
   </ItemGroup>
 
 </Project>

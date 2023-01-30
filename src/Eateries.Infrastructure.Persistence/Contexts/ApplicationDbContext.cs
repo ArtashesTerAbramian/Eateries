@@ -14,6 +14,8 @@ namespace Eateries.Infrastructure.Persistence.Contexts
         private readonly ILoggerFactory _loggerFactory;
         private readonly IDateTimeService _dateTime;
 
+        public ApplicationDbContext() : base() { }
+
         public ApplicationDbContext(
             ILoggerFactory loggerFactory,
             IDateTimeService dateTime)

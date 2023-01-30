@@ -13,8 +13,6 @@ namespace Eateries.Application.Mappings
     {
         public GeneralProfile()
         {
-            CreateMap<Position, GetPositionsViewModel>().ReverseMap();
-            CreateMap<Employee, GetEmployeesViewModel>().ReverseMap();
             CreateMap<CreateAddressCommand, Address>();
             CreateMap<Address, GetAddressViewModel>().ReverseMap();
             CreateMap<CreateEateryCommand, Eatery>().ReverseMap();
