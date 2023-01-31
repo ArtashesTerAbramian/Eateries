@@ -30,6 +30,7 @@ namespace Eateries.Infrastructure.Persistence
 
             services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));
             services.AddTransient<IAddressRepositoryAsync, AddressRepositoryAsync>();
+            services.AddTransient<IMenuRepositoryAsync, MenuRepositoryAsync>();
             /* services.AddTransient<IPositionRepositoryAsync, PositionRepositoryAsync>();
              services.AddTransient<IEmployeeRepositoryAsync, EmployeeRepositoryAsync>();*/
 
