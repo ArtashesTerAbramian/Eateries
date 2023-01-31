@@ -1,4 +1,5 @@
 ﻿using Eateries.Application.Features.Menues.Commands;
+using Eateries.Application.Features.Menues.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +13,10 @@ namespace Eateries.WebApi.Controllers.v1
     {
         // GET: api/<MenuController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get([FromQuery] GetMenuQuery query)
         {
-            return new string[] { "value1", "value2" };
+            var resp = await Mediator.Send(query);
+            return Ok(resp);
         }
 
         // GET api/<MenuController>/5

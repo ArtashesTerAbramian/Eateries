@@ -24,15 +24,18 @@ namespace Eateries.Application.Features.Addresses.Queries.GetAddresses
 
     public class GetAllAddressQueryHandler : IRequestHandler<GetAddressQuery, PagedResponse<IEnumerable<Entity>>>
     {
-        private readonly IAddressRepositoryAsync addressRepository;
-        private readonly IMapper mapper;
-        private readonly IModelHelper modelHelper;
+        private readonly IAddressRepositoryAsync _addressRepositoryAsync;
+        private readonly IMapper _mapper;
+        private readonly IModelHelper _modelHelper;
 
-        public GetAllAddressQueryHandler(IAddressRepositoryAsync addressRepository, IMapper mapper, IModelHelper modelHelper)
+        public GetAllAddressQueryHandler(
+            IAddressRepositoryAsync addressRepository, 
+            IMapper mapper,
+            IModelHelper modelHelper)
         {
-            this.addressRepository = addressRepository;
-            this.mapper = mapper;
-            this.modelHelper = modelHelper;
+            this._addressRepositoryAsync = addressRepository;
+            this._mapper = mapper;
+            this._modelHelper = modelHelper;
         }
 
 
@@ -44,15 +47,15 @@ namespace Eateries.Application.Features.Addresses.Queries.GetAddresses
             if (!string.IsNullOrEmpty(validFilter.Fields))
             {
                 //limit to fields in view model
-                validFilter.Fields = modelHelper.ValidateModelFields<GetAddressViewModel>(validFilter.Fields);
+                validFilter.Fields = _modelHelper.ValidateModelFields<GetAddressViewModel>(validFilter.Fields);
             }
             if (string.IsNullOrEmpty(validFilter.Fields))
             {
                 //default fields from view model
-                validFilter.Fields = modelHelper.GetModelFields<GetAddressViewModel>();
+                validFilter.Fields = _modelHelper.GetModelFields<GetAddressViewModel>();
             }
             // query based on filter
-            var entityPositions = await addressRepository.GetPagedAddressReponseAsync(validFilter);
+            var entityPositions = await _addressRepositoryAsync.GetPagedAddressReponseAsync(validFilter);
             var data = entityPositions.data;
             RecordsCount recordCount = entityPositions.recordsCount;
             // response wrapper

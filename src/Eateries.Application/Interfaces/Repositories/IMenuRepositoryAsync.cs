@@ -1,4 +1,6 @@
-﻿using Eateries.Domain.Entities;
+﻿using Eateries.Application.Features.Menues.Queries;
+using Eateries.Application.Parameters;
+using Eateries.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +11,6 @@ namespace Eateries.Application.Interfaces.Repositories
 {
     public interface IMenuRepositoryAsync : IGenericRepositoryAsync<Menu>
     {
+        Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedMenusReponseAsync(GetMenuQuery requestParameter);
     }
 }
