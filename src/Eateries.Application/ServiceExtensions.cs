@@ -13,13 +13,14 @@ namespace Eateries.Application
     {
         public static void AddApplicationLayer(this IServiceCollection services)
         {
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddScoped<IModelHelper, ModelHelper>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddScoped<IDataShapeHelper<Address>, DataShapeHelper<Address>>();
             services.AddScoped<IDataShapeHelper<Menu>, DataShapeHelper<Menu>>();
-            services.AddScoped<IModelHelper, ModelHelper>();
+            services.AddScoped<IDataShapeHelper<Eatery>, DataShapeHelper<Eatery>>();
             //services.AddScoped<IMockData, MockData>();
         }
     }
