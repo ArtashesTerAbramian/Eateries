@@ -26,9 +26,8 @@ namespace Eateries.Infrastructure.Persistence.Contexts
         }
 
         public DbSet<Address> Addresses { get; set; }
-        public DbSet<Cafe> Cafes { get; set; }
+        public DbSet<Eatery> Eateries { get; set; }
         public DbSet<Menu> Menus { get; set; }
-        public DbSet<Restaurant> Restaurants { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

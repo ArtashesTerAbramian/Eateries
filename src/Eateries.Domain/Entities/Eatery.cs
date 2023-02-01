@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 
 namespace Eateries.Domain.Entities
 {
-    public abstract class Eateries : AuditableBaseEntity
+    public class Eatery : AuditableBaseEntity
     {
         public string Name { get; set; }
+        public string? Description { get; set; }
+        public Menu? Menu { get; set; }
+        public Address? Address { get; set; }
         public EateryType? EateryType { get; set; }
-        public Menu Menu { get; set; }
-        public Address Address { get; set; }
+        public int? PlaceCount { get; set; }
+        public int? ChairPrice { get; set; }
     }
 }
