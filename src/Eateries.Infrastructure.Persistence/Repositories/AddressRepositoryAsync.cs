@@ -32,9 +32,9 @@ namespace Eateries.Infrastructure.Persistence.Repositories
 
         public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedAddressReponseAsync(GetAddressQuery requestParameter)
         {
-            var addressStreet = requestParameter.street;
-            var addressCountry = requestParameter.country;
-            var addressCity = requestParameter.city;
+            var addressStreet = requestParameter.Street;
+            var addressCountry = requestParameter.Country;
+            var addressCity = requestParameter.City;
 
             var pageNumber = requestParameter.PageNumber;
             var pageSize = requestParameter.PageSize;

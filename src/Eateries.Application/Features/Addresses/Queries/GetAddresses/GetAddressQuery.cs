@@ -17,9 +17,9 @@ namespace Eateries.Application.Features.Addresses.Queries.GetAddresses
 {
     public class GetAddressQuery : QueryParameter, IRequest<PagedResponse<IEnumerable<Entity>>>
     {
-        public string? street { get; set; }
-        public string? country { get; set; }
-        public string? city{ get; set; }
+        public string? Street { get; set; }
+        public string? Country { get; set; }
+        public string? City{ get; set; }
     }
 
     public class GetAllAddressQueryHandler : IRequestHandler<GetAddressQuery, PagedResponse<IEnumerable<Entity>>>
