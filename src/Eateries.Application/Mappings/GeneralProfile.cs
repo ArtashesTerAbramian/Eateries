@@ -2,6 +2,7 @@
 using Eateries.Application.Features.Addresses.Commands;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Eateries.Application.Features.Eateries.Commands;
+using Eateries.Application.Features.Eateries.Queries.GetEateries;
 using Eateries.Application.Features.Menues.Commands;
 using Eateries.Application.Features.Menues.Queries;
 //using Eateries.Application.Features.Positions.Commands.CreatePosition;
@@ -19,6 +20,7 @@ namespace Eateries.Application.Mappings
             CreateMap<CreateMenuCommand, Menu>().ReverseMap();
             CreateMap<Menu, GetMenuViewModel>().ReverseMap();
             CreateMap<CreateEateryCommand, Eatery>();
+            CreateMap<Eatery, GetEateriesViewModel>().ReverseMap();
         }
     }
 }

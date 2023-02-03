@@ -1,4 +1,6 @@
-﻿using Eateries.Application.Features.Eateries.Commands;
+﻿using Eateries.Application.Features.Addresses.Queries.GetAddresses;
+using Eateries.Application.Features.Eateries.Commands;
+using Eateries.Application.Features.Eateries.Queries.GetEateries;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,9 +13,9 @@ namespace Eateries.WebApi.Controllers.v1
     {
         // GET: api/<EateryController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get([FromQuery] GetEateriesQuery filter)
         {
-            return new string[] { "value1", "value2" };
+            return Ok(await Mediator.Send(filter));
         }
 
         // GET api/<EateryController>/5
