@@ -51,7 +51,7 @@ namespace Eateries.Infrastructure.Persistence.Repositories
             recordsTotal = await result.CountAsync();
 
             // filter data
-            FilterByColumn(ref result, addressStreet, addressCountry);
+            FilterByColumn(ref result, addressStreet, addressCountry, addressCity);
 
             // Count records after filter
             recordsFiltered = await result.CountAsync();
@@ -87,7 +87,11 @@ namespace Eateries.Infrastructure.Persistence.Repositories
             return (shapeData, recordsCount);
         }
 
-        private void FilterByColumn(ref IQueryable<Address> addresses, string addressNumber, string addressTitle)
+        private void FilterByColumn(
+            ref IQueryable<Address> addresses, 
+            string addressNumber, 
+            string addressTitle,
+            string addressCity)
         {
             if (!addresses.Any())
                 return;
@@ -102,6 +106,9 @@ namespace Eateries.Infrastructure.Persistence.Repositories
 
             if (!string.IsNullOrEmpty(addressTitle))
                 predicate = predicate.Or(p => p.City.Contains(addressTitle.Trim()));
+
+            if (!string.IsNullOrEmpty(addressCity))
+                predicate = predicate.Or(p => p.City.Contains(addressCity.Trim()));
 
             addresses = addresses.Where(predicate);
         }
