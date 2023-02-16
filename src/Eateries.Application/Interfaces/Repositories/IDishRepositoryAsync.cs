@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Eateries.Application.Interfaces.Repositories
 {
-    public interface IMenuRepositoryAsync : IGenericRepositoryAsync<Menu>
+    public interface IDishRepositoryAsync : IGenericRepositoryAsync<Dish>
     {
-        Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedMenusReponseAsync(GetMenuQuery requestParameter);
+        Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedDishesReponseAsync(GetDishQuery requestParameter);
     }
 }

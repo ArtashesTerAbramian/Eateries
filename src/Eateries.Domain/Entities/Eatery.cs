@@ -2,6 +2,7 @@
 using Eateries.Domain.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,13 @@ namespace Eateries.Domain.Entities
     {
         public string Name { get; set; }
         public string? Description { get; set; }
-        public Menu? Menu { get; set; }
+
+        [ForeignKey("Dish")]
+        public Guid DishId { get; set; }
+        public Dish? Dish { get; set; }
+
+        [ForeignKey("Address")]
+        public Guid AddressId { get; set; }
         public Address? Address { get; set; }
         public EateryType? EateryType { get; set; }
         public int? PlaceCount { get; set; }

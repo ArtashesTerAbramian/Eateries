@@ -1,5 +1,4 @@
-﻿using Eateries.Application.Features.Menues.Queries;
-using Eateries.Application.Helpers;
+﻿using Eateries.Application.Helpers;
 using Eateries.Application.Interfaces;
 using Eateries.Application.Interfaces.Repositories;
 using Eateries.Application.Parameters;
@@ -15,26 +14,27 @@ using System.Linq.Dynamic.Core;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Eateries.Application.Features.Menues.Queries;
 
 namespace Eateries.Infrastructure.Persistence.Repositories
 {
-    internal class MenuRepositoryAsync : GenericRepositoryAsync<Menu>, IMenuRepositoryAsync
+    internal class DishRepositoryAsync : GenericRepositoryAsync<Dish>, IDishRepositoryAsync
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly IDataShapeHelper<Menu> _dataShaper;
-        private readonly DbSet<Menu> _menu;
+        private readonly IDataShapeHelper<Dish> _dataShaper;
+        private readonly DbSet<Dish> _menu;
 
-        public MenuRepositoryAsync(ApplicationDbContext dbContext,
-            IDataShapeHelper<Menu> dataShapeHelper) 
+        public DishRepositoryAsync(ApplicationDbContext dbContext,
+            IDataShapeHelper<Dish> dataShapeHelper) 
             : base(dbContext)
         {
             this._dbContext = dbContext;
             this._dataShaper = dataShapeHelper;
-            this._menu = dbContext.Set<Menu>();
+            this._menu = dbContext.Set<Dish>();
         }
 
         public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)>
-                        GetPagedMenusReponseAsync(GetMenuQuery requestParameter)
+                        GetPagedDishesReponseAsync(GetDishQuery requestParameter)
         {
             var menuName = requestParameter.Name;
             var menuDescription = requestParameter.Description;
@@ -75,7 +75,7 @@ namespace Eateries.Infrastructure.Persistence.Repositories
             // select columns
             if (!string.IsNullOrWhiteSpace(fields))
             {
-                result = result.Select<Menu>("new(" + fields + ")");
+                result = result.Select<Dish>("new(" + fields + ")");
             }
             // paging
             result = result
@@ -90,7 +90,7 @@ namespace Eateries.Infrastructure.Persistence.Repositories
             return (shapeData, recordsCount);
         }
 
-        private void FilterByColumn(ref IQueryable<Menu> menus, string menusName, string menusDescription)
+        private void FilterByColumn(ref IQueryable<Dish> menus, string menusName, string menusDescription)
         {
             if (!menus.Any())
                 return;
@@ -98,7 +98,7 @@ namespace Eateries.Infrastructure.Persistence.Repositories
             if (string.IsNullOrEmpty(menusDescription) && string.IsNullOrEmpty(menusName))
                 return;
 
-            var predicate = PredicateBuilder.New<Menu>();
+            var predicate = PredicateBuilder.New<Dish>();
 
             if (!string.IsNullOrEmpty(menusName))
                 predicate = predicate.Or(p => p.Name.Contains(menusName.Trim()));

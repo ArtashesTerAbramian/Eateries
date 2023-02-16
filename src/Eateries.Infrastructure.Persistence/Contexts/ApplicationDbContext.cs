@@ -2,10 +2,7 @@
 using Eateries.Domain.Common;
 using Eateries.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Logging;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Eateries.Infrastructure.Persistence.Contexts
 {
@@ -14,7 +11,9 @@ namespace Eateries.Infrastructure.Persistence.Contexts
         private readonly ILoggerFactory _loggerFactory;
         private readonly IDateTimeService _dateTime;
 
-        public ApplicationDbContext() : base() { }
+        public ApplicationDbContext() : base()
+        {
+        }
 
         public ApplicationDbContext(
             ILoggerFactory loggerFactory,
@@ -27,7 +26,10 @@ namespace Eateries.Infrastructure.Persistence.Contexts
 
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Eatery> Eateries { get; set; }
-        public DbSet<Menu> Menus { get; set; }
+        public DbSet<Dish> Dishes { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<DishIngredients> DishIngredients { get; set; }
+        public DbSet<Cuisine> Type { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -44,6 +46,7 @@ namespace Eateries.Infrastructure.Persistence.Contexts
                         break;
                 }
             }
+
             return base.SaveChangesAsync(cancellationToken);
         }
 
@@ -58,7 +61,8 @@ namespace Eateries.Infrastructure.Persistence.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EateriesDb;Integrated Security=True;");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EateriesDb;" +
+                                        "Integrated Security=True;");
             optionsBuilder.UseLoggerFactory(_loggerFactory);
         }
     }
