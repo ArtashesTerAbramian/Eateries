@@ -13,7 +13,7 @@ namespace Eateries.Application.Features.Eateries.Queries.GetEateries
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
-        public Menu? Menu { get; set; }
+        public Dish? Dish { get; set; }
         public Address? Address { get; set; }
         public EateryType? EateryType { get; set; }
         public int? PlaceCount { get; set; }

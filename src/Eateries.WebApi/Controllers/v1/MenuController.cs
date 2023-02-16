@@ -13,7 +13,7 @@ namespace Eateries.WebApi.Controllers.v1
     {
         // GET: api/<MenuController>
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetMenuQuery query)
+        public async Task<IActionResult> Get([FromQuery] GetDishQuery query)
         {
             var resp = await Mediator.Send(query);
             return Ok(resp);
@@ -28,7 +28,7 @@ namespace Eateries.WebApi.Controllers.v1
 
         // POST api/<MenuController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateMenuCommand value)
+        public async Task<IActionResult> Post([FromBody] CreateDishCommand value)
         {
             var resp = await Mediator.Send(value);
             return CreatedAtAction(nameof(Post), resp);
