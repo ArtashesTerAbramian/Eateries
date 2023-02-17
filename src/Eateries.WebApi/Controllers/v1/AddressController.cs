@@ -36,8 +36,14 @@ namespace Eateries.WebApi.Controllers.v1
 
         // PUT api/<AddressController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(Guid id, [FromBody] UpdateAddressCommand command)
         {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+
+            return Ok(await Mediator.Send(command));
         }
 
         // DELETE api/<AddressController>/5
