@@ -6,10 +6,11 @@ using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using Eateries.Application.Interfaces.Repositories;
 
 namespace Eateries.Application
 {
-    public static class ServiceExtensions
+    public static class ServiceExtensicons
     {
         public static void AddApplicationLayer(this IServiceCollection services)
         {
@@ -21,6 +22,9 @@ namespace Eateries.Application
             services.AddScoped<IDataShapeHelper<Address>, DataShapeHelper<Address>>();
             services.AddScoped<IDataShapeHelper<Dish>, DataShapeHelper<Dish>>();
             services.AddScoped<IDataShapeHelper<Eatery>, DataShapeHelper<Eatery>>();
+            services.AddScoped<IDataShapeHelper<Cuisine>, DataShapeHelper<Cuisine>>();
+            services.AddScoped<IDataShapeHelper<Ingredient>, DataShapeHelper<Ingredient>>();
+            services.AddScoped<IDataShapeHelper<DishIngredients>, DataShapeHelper<DishIngredients>>();
             //services.AddScoped<IMockData, MockData>();
         }
     }

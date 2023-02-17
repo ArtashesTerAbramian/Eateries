@@ -1,7 +1,6 @@
 ﻿using Eateries.Application.Features.Addresses.Commands;
 using Eateries.Application.Features.Addresses.Queries.GetAddressById;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
-using Eateries.Application.Interfaces.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

@@ -21,7 +21,8 @@ namespace Eateries.Infrastructure.Persistence.Repositories
         private readonly ApplicationDbContext _dbContext;
         private readonly IDataShapeHelper<Address> _dataShaper;
         private readonly DbSet<Address> _address;
-        public AddressRepositoryAsync(ApplicationDbContext dbContext,
+        public AddressRepositoryAsync(
+            ApplicationDbContext dbContext,
              IDataShapeHelper<Address> dataShaper)
             : base(dbContext)
         {

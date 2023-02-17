@@ -1,5 +1,6 @@
 ﻿using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Eateries.Application.Features.Eateries.Commands;
+using Eateries.Application.Features.Eateries.Commands.UpdateEatery;
 using Eateries.Application.Features.Eateries.Queries.GetEateries;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,8 +36,13 @@ namespace Eateries.WebApi.Controllers.v1
 
         // PUT api/<EateryController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(Guid id, [FromBody] UpdateEateryCommand command)
         {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+            return Ok(await Mediator.Send(command));
         }
 
         // DELETE api/<EateryController>/5

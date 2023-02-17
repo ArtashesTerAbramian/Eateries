@@ -9,7 +9,7 @@ namespace Eateries.WebApi.Controllers.v1
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MenuController : BaseApiController
+    public class DishController : BaseApiController
     {
         // GET: api/<MenuController>
         [HttpGet]

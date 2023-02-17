@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Eateries.Application.Features.Addresses.Commands;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
+using Eateries.Application.Features.Cuisine.Command.CreateCuisine;
 using Eateries.Application.Features.Eateries.Commands;
 using Eateries.Application.Features.Eateries.Queries.GetEateries;
 using Eateries.Application.Features.Menues.Commands;
@@ -19,6 +20,8 @@ namespace Eateries.Application.Mappings
             CreateMap<Dish, GetDishViewModel>().ReverseMap();
             CreateMap<CreateEateryCommand, Eatery>();
             CreateMap<Eatery, GetEateriesViewModel>().ReverseMap();
+            CreateMap<Cuisine, CreateCuisineCommand>().ReverseMap();
+            
         }
     }
 }

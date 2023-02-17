@@ -29,7 +29,7 @@ namespace Eateries.Infrastructure.Persistence.Contexts
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<Ingredient> Ingredients { get; set; }
         public DbSet<DishIngredients> DishIngredients { get; set; }
-        public DbSet<Cuisine> Type { get; set; }
+        public DbSet<Cuisine> Cuisines { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
