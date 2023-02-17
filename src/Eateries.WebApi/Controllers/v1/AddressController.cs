@@ -1,4 +1,5 @@
 ﻿using Eateries.Application.Features.Addresses.Commands;
+using Eateries.Application.Features.Addresses.Queries.GetAddressById;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Eateries.Application.Interfaces.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -20,9 +21,9 @@ namespace Eateries.WebApi.Controllers.v1
 
         // GET api/<AddressController>/5
         [HttpGet("{id}")]
-        public string Get(Guid id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            return "value";
+            return Ok(await Mediator.Send(new GetAddressByIdQuery{Id = id}));
         }
 
         // POST api/<AddressController>
