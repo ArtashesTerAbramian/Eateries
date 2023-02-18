@@ -20,11 +20,7 @@ namespace Eateries.Domain.Entities
         public string Name { get; set; }
 
         public string? Description { get; set; }
-        public Menu? Menu { get; set; }
-        public Address? Address { get; set; }
-
         public ICollection<Menu> Menus { get; set; }
-
         public ICollection<Address> Addresses { get; set; }
         public EateryType? EateryType { get; set; }
 

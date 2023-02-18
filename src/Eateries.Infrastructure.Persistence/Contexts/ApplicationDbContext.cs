@@ -57,15 +57,6 @@ namespace Eateries.Infrastructure.Persistence.Contexts
             modelBuilder.Entity<DishIngredient>()
                 .HasKey(di => new { di.DishId, di.IngredientId });
 
-            modelBuilder.Entity<Dish>()
-                .HasKey(di => new { di.CuisineId });
-
-            modelBuilder.Entity<Address>()
-                .HasKey(ad => new { ad.EateryId });
-
-            modelBuilder.Entity<Menu>()
-                .HasKey(mu => new { mu.EateryId });
-
             modelBuilder.Entity<MenuDish>()
                 .HasKey(md => new { md.DishId, md.MenuId });
             
@@ -88,6 +79,21 @@ namespace Eateries.Infrastructure.Persistence.Contexts
                 .HasOne(di => di.Ingredient)
                 .WithMany(i => i.DishIngredients)
                 .HasForeignKey(di => di.IngredientId);
+            
+            modelBuilder.Entity<Dish>()
+                .HasOne(d => d.Cuisine)     // specifies the navigation property to the Cuisine entity
+                .WithMany(c => c.Dishes)    // specifies the collection navigation property to the Dish entity
+                .HasForeignKey(d => d.CuisineId); 
+            
+            modelBuilder.Entity<Address>()
+                .HasOne(a => a.Eatery)
+                .WithMany(e => e.Addresses)
+                .HasForeignKey(a => a.EateryId);
+
+            modelBuilder.Entity<Menu>()
+                .HasOne(mu => mu.Eatery)
+                .WithMany(mu => mu.Menus)
+                .HasForeignKey(mu => mu.EateryId);
             
             base.OnModelCreating(modelBuilder);
         }

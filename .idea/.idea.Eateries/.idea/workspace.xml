@@ -6,11 +6,29 @@
     <projectFile profileName="https">src/Eateries.WebApi/Eateries.WebApi.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9aea073-03f3-4a79-9ff0-826675f34d55" name="Changes" comment="CodeFirst Entity ready" />
+    <list default="true" id="a9aea073-03f3-4a79-9ff0-826675f34d55" name="Changes" comment="CodeFirst Entity ready">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Eateries/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Eateries/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Eateries.Domain/Entities/Cuisine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Eateries.Domain/Entities/Cuisine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Eateries.Domain/Entities/Eatery.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Eateries.Domain/Entities/Eatery.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Eateries.Infrastructure.Persistence/Contexts/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Eateries.Infrastructure.Persistence/Contexts/ApplicationDbContext.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="f309316f-4821-481d-8588-02d80cc7afee" />
+        <option name="url" value="https://github.com/ArtashesTerAbramian/Eateries.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/70f617fc68cf47c4af27e06f2b56f801b1c8a8/12/083b4c1b/0200065Epdb888.il" root0="SKIP_HIGHLIGHTING" />
