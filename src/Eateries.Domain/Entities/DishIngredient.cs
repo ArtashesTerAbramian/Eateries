@@ -4,12 +4,8 @@ using Eateries.Domain.Common;
 
 namespace Eateries.Domain.Entities;
 
-public class DishIngredient : AuditableBaseEntity
+public class DishIngredient
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public override Guid Id { get; set; }
-
     public Guid DishId { get; set; }
     public Dish Dish { get; set; }
 
