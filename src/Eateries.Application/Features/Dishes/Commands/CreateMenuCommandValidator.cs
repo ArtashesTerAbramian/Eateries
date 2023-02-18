@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace Eateries.Application.Features.Menues.Commands
 {
-    internal class CreateMenuCommandValidator : AbstractValidator<Dish>
+    internal class CreateMenuCommandValidator : AbstractValidator<Menu>
     {
-        private readonly IDishRepositoryAsync _dishRepositoryAsync;
+        private readonly IMenuRepositoryAsync _menuRepositoryAsync;
 
-        public CreateMenuCommandValidator(IDishRepositoryAsync dishRepositoryAsync)
+        public CreateMenuCommandValidator(IMenuRepositoryAsync menuRepositoryAsync)
         {
-            this._dishRepositoryAsync = dishRepositoryAsync;
+            this._menuRepositoryAsync = menuRepositoryAsync;
 
-            RuleFor(r => r.Price)
+            RuleFor(r => r.Name)
                 .NotEmpty().WithMessage("{PropertyName} cant be empty");
         }
     }

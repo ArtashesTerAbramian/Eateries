@@ -16,6 +16,7 @@ namespace Eateries.Application.Features.Addresses.Commands
         public string Country { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
+        public Guid EateryId { get; set; }
     }
 
     public class CreateAddressCommandHandler : IRequestHandler<CreateAddressCommand, Response<Guid>>
