@@ -1,8 +1,15 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Eateries.Domain.Common;
 
 namespace Eateries.Domain.Entities;
 
-public class Ingredient : BaseEntity
+public class Ingredient : AuditableBaseEntity
 {
-    public string Ingredients { get; set; }
+    [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    public override Guid Id { get; set; }
+
+    public string IngredientName { get; set; }
+    public ICollection<DishIngredient> DishIngredients { get; set; }
 }
