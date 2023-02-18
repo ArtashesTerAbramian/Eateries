@@ -28,6 +28,9 @@ namespace Eateries.Infrastructure.Persistence.Contexts
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Eatery> Eateries { get; set; }
         public DbSet<Menu> Menus { get; set; }
+        public DbSet<Dish> Dishes { get; set; }
+        public DbSet<Cuisine> Cuisines { get; set; }
+        public DbSet<MenuDish> MenuDishes { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
@@ -47,13 +50,44 @@ namespace Eateries.Infrastructure.Persistence.Contexts
             return base.SaveChangesAsync(cancellationToken);
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            /* var _mockData = this.Database.GetService<IMockService>();
-             var seedPositions = _mockData.SeedPositions(1000);
-             builder.Entity<Position>().HasData(seedPositions);
- */
-            base.OnModelCreating(builder);
+            modelBuilder.Entity<DishIngredient>()
+                .HasKey(di => new { di.DishId, di.IngredientId });
+            
+            modelBuilder.Entity<Dish>()
+                .HasKey(di => new { di.CuisineId });
+
+            modelBuilder.Entity<Address>()
+                .HasKey(ad => new { ad.EateryId });
+
+            modelBuilder.Entity<Menu>()
+                .HasKey(mu => new { mu.EateryId });
+
+            modelBuilder.Entity<MenuDish>()
+                .HasKey(md => new { md.DishId, md.MenuId });
+
+            modelBuilder.Entity<MenuDish>()
+                .HasOne(md => md.Dish)
+                .WithMany(md => md.MenuDishes)
+                .HasForeignKey(md => md.DishId);
+
+            modelBuilder.Entity<MenuDish>()
+                .HasOne(md => md.Menu)
+                .WithMany(md => md.MenuDishes)
+                .HasForeignKey(md => md.MenuId);
+
+            modelBuilder.Entity<DishIngredient>()
+                .HasOne(di => di.Dish)
+                .WithMany(d => d.DishIngredients)
+                .HasForeignKey(di => di.DishId);
+
+            modelBuilder.Entity<DishIngredient>()
+                .HasOne(di => di.Ingredient)
+                .WithMany(i => i.DishIngredients)
+                .HasForeignKey(di => di.IngredientId);
+            
+            base.OnModelCreating(modelBuilder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
