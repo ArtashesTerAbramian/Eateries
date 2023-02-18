@@ -17,8 +17,8 @@ namespace Eateries.Application.Mappings
         {
             CreateMap<CreateAddressCommand, Address>();
             CreateMap<Address, GetAddressViewModel>().ReverseMap();
-            CreateMap<CreateDishCommand, Dish>().ReverseMap();
-            CreateMap<Dish, GetDishViewModel>().ReverseMap();
+            CreateMap<CreateMenuCommand, Menu>().ReverseMap();
+            CreateMap<Menu, GetMenuViewModel>().ReverseMap();
             CreateMap<CreateEateryCommand, Eatery>();
             CreateMap<Eatery, GetEateriesViewModel>().ReverseMap();
         }

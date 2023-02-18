@@ -20,6 +20,7 @@ namespace Eateries.Application.Features.Addresses.Queries.GetAddresses
         public string? Street { get; set; }
         public string? Country { get; set; }
         public string? City{ get; set; }
+        public Guid EateryId { get; set; }
     }
 
     public class GetAllAddressQueryHandler : IRequestHandler<GetAddressQuery, PagedResponse<IEnumerable<Entity>>>
