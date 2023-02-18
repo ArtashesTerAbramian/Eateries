@@ -1,6 +1,7 @@
 ﻿using Eateries.Application.Interfaces;
 using Eateries.Domain.Common;
 using Eateries.Domain.Entities;
+using Eateries.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -94,6 +95,18 @@ namespace Eateries.Infrastructure.Persistence.Contexts
                 .HasOne(mu => mu.Eatery)
                 .WithMany(mu => mu.Menus)
                 .HasForeignKey(mu => mu.EateryId);
+            
+            modelBuilder.Entity<Eatery>()
+                .Property(e => e.EateryType)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (EateryType)Enum.Parse(typeof(EateryType), v));
+            
+            modelBuilder.Entity<Cuisine>().HasData(
+                new Cuisine { Id = new Guid("a5b0f2b7-5e98-4a7c-836f-0c7a1b9a88b7"), CuisineName = "European"},
+                new Cuisine { Id = new Guid("c58f23af-65e4-4ca1-9fb4-6b1dfc7a48a8"), CuisineName = "Armenian"},
+                new Cuisine { Id = new Guid("f43a5871-1037-4ef5-ae6d-d08e1b5c7461"), CuisineName = "Russian"}
+            );
             
             base.OnModelCreating(modelBuilder);
         }
