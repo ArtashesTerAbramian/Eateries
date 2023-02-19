@@ -6,7 +6,7 @@ using Eateries.Application.Wrappers;
 using Eateries.Domain.Entities;
 using MediatR;
 
-namespace Eateries.Application.Features.Menues.Queries
+namespace Eateries.Application.Features.Menues.Queries.GetMenus
 {
     public class GetMenuQuery : QueryParameter, IRequest<PagedResponse<IEnumerable<Entity>>>
     {

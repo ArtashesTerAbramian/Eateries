@@ -1,11 +1,6 @@
-﻿using Eateries.Application.Features.Menues.Queries;
-using Eateries.Application.Parameters;
+﻿using Eateries.Application.Parameters;
 using Eateries.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Eateries.Application.Features.Menues.Queries.GetMenus;
 
 namespace Eateries.Application.Interfaces.Repositories
 {

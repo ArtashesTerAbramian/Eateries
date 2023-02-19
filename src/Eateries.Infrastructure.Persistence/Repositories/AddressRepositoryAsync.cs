@@ -13,6 +13,7 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Eateries.Infrastructure.Persistence.Repositories
 {
@@ -20,14 +21,16 @@ namespace Eateries.Infrastructure.Persistence.Repositories
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IDataShapeHelper<Address> _dataShaper;
+        private readonly ILogger<AddressRepositoryAsync> _logger;
         private readonly DbSet<Address> _address;
         public AddressRepositoryAsync(ApplicationDbContext dbContext,
-             IDataShapeHelper<Address> dataShaper)
-            : base(dbContext)
+             IDataShapeHelper<Address> dataShaper, ILogger<AddressRepositoryAsync> logger)
+            : base(dbContext, logger)
         {
             this._dbContext = dbContext;
             this._address = dbContext.Set<Address>();
             this._dataShaper = dataShaper;
+            _logger = logger;
         }
 
         public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedAddressReponseAsync(GetAddressQuery requestParameter)

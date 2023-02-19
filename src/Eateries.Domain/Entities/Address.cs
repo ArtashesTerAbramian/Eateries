@@ -10,7 +10,6 @@ using System.Text;
     public class Address
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string Country { get; set; }
         public string City { get; set; }

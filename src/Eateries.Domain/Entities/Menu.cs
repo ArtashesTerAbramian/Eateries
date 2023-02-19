@@ -11,8 +11,7 @@ namespace Eateries.Domain.Entities
     public class Menu : AuditableBaseEntity
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public override Guid Id { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
 

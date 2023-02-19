@@ -6,16 +6,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Eateries.Infrastructure.Persistence.Repository
 {
     public class GenericRepositoryAsync<T> : IGenericRepositoryAsync<T> where T : class
     {
         private readonly ApplicationDbContext _dbContext;
+        private readonly ILogger<GenericRepositoryAsync<T>> _logger;
 
-        public GenericRepositoryAsync(ApplicationDbContext dbContext)
+        public GenericRepositoryAsync(ApplicationDbContext dbContext, ILogger<GenericRepositoryAsync<T>> logger)
         {
             _dbContext = dbContext;
+            _logger = logger;
         }
 
         public virtual async Task<T> GetByIdAsync(Guid id)
@@ -49,6 +52,7 @@ namespace Eateries.Infrastructure.Persistence.Repository
         {
             await _dbContext.Set<T>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();
+            _logger.LogInformation($"{typeof(T)} Created Entity: {entity}");
             return entity;
         }
 

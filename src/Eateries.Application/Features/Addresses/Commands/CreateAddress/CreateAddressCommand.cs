@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eateries.Application.Features.Addresses.Commands
+namespace Eateries.Application.Features.Addresses.Commands.CreateAddress
 {
     public partial class CreateAddressCommand : IRequest<Response<Guid>>
     {

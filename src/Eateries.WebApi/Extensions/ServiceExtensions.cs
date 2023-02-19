@@ -1,7 +1,11 @@
 ﻿using IdentityServer4.AccessTokenValidation;
 using Microsoft.OpenApi.Models;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Text.Json;
+using Eateries.Domain.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Eateries.WebApi.Extensions
 {
@@ -76,7 +80,7 @@ namespace Eateries.WebApi.Extensions
             });
         }
 
-        public static void AddJWTAuthentication(this IServiceCollection services, IConfiguration configuration)
+        /*public static void AddJWTAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
 
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
@@ -85,6 +89,24 @@ namespace Eateries.WebApi.Extensions
                 options.Authority = configuration["Sts:ServerUrl"];
                 options.RequireHttpsMetadata = false;
             });
+        }*/
+
+        public static void AddJWTAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = configuration["JWTSettings:Issuer"],
+                        ValidAudience = configuration["JWTSettings:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWTSettings:Key"]))
+                    };
+                });
         }
     }
 }

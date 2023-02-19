@@ -7,7 +7,6 @@ namespace Eateries.Domain.Entities;
 public class Dish : AuditableBaseEntity
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public override Guid Id { get; set; }
     public string Name { get; set; }
 
