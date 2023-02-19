@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eateries.Application.Features.Menues.Commands
+namespace Eateries.Application.Features.Menues.Commands.CreateMenu
 {
     internal class CreateMenuCommandValidator : AbstractValidator<Menu>
     {

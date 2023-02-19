@@ -1,5 +1,6 @@
 ﻿using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Eateries.Application.Features.Eateries.Commands;
+using Eateries.Application.Features.Eateries.Commands.CreateEatery;
 using Eateries.Application.Features.Eateries.Queries.GetEateries;
 using Microsoft.AspNetCore.Mvc;
 

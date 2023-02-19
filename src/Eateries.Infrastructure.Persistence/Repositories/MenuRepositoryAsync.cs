@@ -15,6 +15,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Eateries.Application.Features.Menues.Queries;
+using Eateries.Application.Features.Menues.Queries.GetMenus;
+using Microsoft.Extensions.Logging;
 
 namespace Eateries.Infrastructure.Persistence.Repositories
 {
@@ -22,14 +24,17 @@ namespace Eateries.Infrastructure.Persistence.Repositories
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IDataShapeHelper<Menu> _dataShaper;
+        private readonly ILogger<MenuRepositoryAsync> _logger;
         private readonly DbSet<Menu> _menu;
 
         public MenuRepositoryAsync(ApplicationDbContext dbContext,
-            IDataShapeHelper<Menu> dataShapeHelper) 
-            : base(dbContext)
+            IDataShapeHelper<Menu> dataShapeHelper,
+            ILogger<MenuRepositoryAsync> logger) 
+            : base(dbContext, logger)
         {
             this._dbContext = dbContext;
             this._dataShaper = dataShapeHelper;
+            _logger = logger;
             this._menu = dbContext.Set<Menu>();
         }
 

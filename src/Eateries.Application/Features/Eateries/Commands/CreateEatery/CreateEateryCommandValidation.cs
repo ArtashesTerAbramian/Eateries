@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eateries.Application.Features.Eateries.Commands
+namespace Eateries.Application.Features.Eateries.Commands.CreateEatery
 {
     internal class CreateEateryCommandValidation : AbstractValidator<CreateEateryCommand>
     {

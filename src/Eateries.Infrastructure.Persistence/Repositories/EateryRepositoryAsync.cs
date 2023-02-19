@@ -14,6 +14,7 @@ using System.Linq.Dynamic.Core;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Eateries.Infrastructure.Persistence.Repositories
 {
@@ -22,13 +23,16 @@ namespace Eateries.Infrastructure.Persistence.Repositories
         private readonly ApplicationDbContext _dbContext;
         private readonly DbSet<Eatery> _eatery;
         private readonly IDataShapeHelper<Eatery> _dataShaper;
+        private readonly ILogger<EateryRepositoryAsync> _logger;
 
         public EateryRepositoryAsync(ApplicationDbContext dbContext,
-            IDataShapeHelper<Eatery> dataShaper) : base(dbContext)
+            IDataShapeHelper<Eatery> dataShaper,
+            ILogger<EateryRepositoryAsync> logger) : base(dbContext, logger)
         {
             this._dbContext = dbContext;
             this._eatery = dbContext.Set<Eatery>();
             this._dataShaper = dataShaper;
+            _logger = logger;
         }
 
         public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedEateriesReponseAsync(

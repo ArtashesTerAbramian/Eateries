@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eateries.Application.Features.Eateries.Commands
+namespace Eateries.Application.Features.Eateries.Commands.CreateEatery
 {
     public class CreateEateryCommand : IRequest<Response<Guid>>
     {

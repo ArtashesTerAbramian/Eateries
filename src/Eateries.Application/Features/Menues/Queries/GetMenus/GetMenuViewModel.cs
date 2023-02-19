@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eateries.Application.Features.Menues.Queries
+namespace Eateries.Application.Features.Menues.Queries.GetMenus
 {
     public class GetMenuViewModel
     {

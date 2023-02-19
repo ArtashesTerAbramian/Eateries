@@ -1,12 +1,7 @@
 ﻿using Eateries.Application.Interfaces.Repositories;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Eateries.Application.Features.Addresses.Commands
+namespace Eateries.Application.Features.Addresses.Commands.CreateAddress
 {
     public class CreateAddressCommandValidator : AbstractValidator<CreateAddressCommand>
     {

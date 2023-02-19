@@ -7,7 +7,6 @@ namespace Eateries.Domain.Entities;
 public class Ingredient : AuditableBaseEntity
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public override Guid Id { get; set; }
 
     public string IngredientName { get; set; }
