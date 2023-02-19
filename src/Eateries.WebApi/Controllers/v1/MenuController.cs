@@ -1,5 +1,6 @@
 ﻿using Eateries.Application.Features.Menues.Commands;
 using Eateries.Application.Features.Menues.Queries;
+using Eateries.Application.Features.Menues.Queries.GetMenuById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,9 +22,9 @@ namespace Eateries.WebApi.Controllers.v1
 
         // GET api/<MenuController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            return "value";
+            return Ok(await Mediator.Send(new GetMenuByIdQuery{ Id = id }));
         }
 
         // POST api/<MenuController>
