@@ -1,5 +1,4 @@
-﻿using Eateries.Application.Helpers;
-using Eateries.Application.Interfaces;
+﻿using Eateries.Application.Interfaces;
 using Eateries.Application.Interfaces.Repositories;
 using Eateries.Application.Parameters;
 using Eateries.Domain.Entities;
@@ -7,14 +6,7 @@ using Eateries.Infrastructure.Persistence.Contexts;
 using Eateries.Infrastructure.Persistence.Repository;
 using LinqKit;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Dynamic.Core;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Eateries.Application.Features.Menues.Queries;
 using Eateries.Application.Features.Menues.Queries.GetMenus;
 using Microsoft.Extensions.Logging;
 

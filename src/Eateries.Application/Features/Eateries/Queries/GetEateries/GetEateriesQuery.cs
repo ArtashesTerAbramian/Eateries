@@ -50,9 +50,9 @@ namespace Eateries.Application.Features.Eateries.Queries.GetEateries
                 validFilter.Fields = _modelHelper.GetModelFields<GetEateriesViewModel>();
             }
             // query based on filter
-            var entityPositions = await _eateryRepositoryAsync.GetPagedEateriesReponseAsync(validFilter);
-            var data = entityPositions.data;
-            RecordsCount recordCount = entityPositions.recordsCount;
+            var entityEateries = await _eateryRepositoryAsync.GetPagedEateriesReponseAsync(validFilter);
+            var data = entityEateries.data;
+            RecordsCount recordCount = entityEateries.recordsCount;
             // response wrapper
             return new PagedResponse<IEnumerable<Entity>>(data, validFilter.PageNumber, validFilter.PageSize, recordCount);
         }
