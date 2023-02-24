@@ -1,11 +1,8 @@
 ﻿using Eateries.Application.Interfaces;
 using Eateries.Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Dynamic.Core;
-using System.Threading.Tasks;
+using Eateries.Application.Exceptions;
 using Microsoft.Extensions.Logging;
 
 namespace Eateries.Infrastructure.Persistence.Repository
@@ -23,7 +20,15 @@ namespace Eateries.Infrastructure.Persistence.Repository
 
         public virtual async Task<T> GetByIdAsync(Guid id)
         {
-            return await _dbContext.Set<T>().FindAsync(id);
+            try
+            {
+                return await _dbContext.Set<T>().FindAsync(id);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine();
+                throw;
+            }
         }
 
         public async Task<IEnumerable<T>> GetPagedReponseAsync(int pageNumber, int pageSize)
@@ -36,7 +41,8 @@ namespace Eateries.Infrastructure.Persistence.Repository
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<T>> GetPagedAdvancedReponseAsync(int pageNumber, int pageSize, string orderBy, string fields)
+        public async Task<IEnumerable<T>> GetPagedAdvancedReponseAsync(int pageNumber, int pageSize, string orderBy,
+            string fields)
         {
             return await _dbContext
                 .Set<T>()
@@ -71,8 +77,8 @@ namespace Eateries.Infrastructure.Persistence.Repository
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             return await _dbContext
-                 .Set<T>()
-                 .ToListAsync();
+                .Set<T>()
+                .ToListAsync();
         }
     }
 }

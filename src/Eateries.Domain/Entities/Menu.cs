@@ -10,14 +10,12 @@ namespace Eateries.Domain.Entities
 {
     public class Menu : AuditableBaseEntity
     {
-        [Key]
-        public override Guid Id { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
 
         public Guid EateryId { get; set; }
         public Eatery Eatery { get; set; }
 
-        public ICollection<MenuDish> MenuDishes { get; set; }
+        public List<MenuDish> MenuDishes { get; set; }
     }
 }

@@ -7,8 +7,6 @@ namespace Eateries.Domain.Entities;
 
 public class Cuisine : AuditableBaseEntity
 {
-    [Key]
-    public override Guid Id { get; set; }
     public string CuisineName { get; set; }
-    public ICollection<Dish> Dishes { get; set; }
+    public List<Dish> Dishes { get; set; }
 }
