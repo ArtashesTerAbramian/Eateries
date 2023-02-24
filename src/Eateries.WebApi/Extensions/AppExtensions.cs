@@ -1,5 +1,4 @@
 ﻿using Eateries.WebApi.Middlewares;
-using Microsoft.AspNetCore.Builder;
 
 namespace Eateries.WebApi.Extensions
 {

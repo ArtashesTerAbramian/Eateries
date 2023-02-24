@@ -1,7 +1,4 @@
-﻿using Eateries.Domain.Entities;
-using System.Collections.Generic;
-
-namespace Eateries.Application.Interfaces
+﻿namespace Eateries.Application.Interfaces
 {
     public interface IMockService
     {

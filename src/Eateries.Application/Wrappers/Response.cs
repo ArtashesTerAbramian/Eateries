@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Eateries.Application.Wrappers
+﻿namespace Eateries.Application.Wrappers
 {
     public class Response<T>
     {

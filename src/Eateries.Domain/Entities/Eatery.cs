@@ -1,13 +1,6 @@
 ﻿using Eateries.Domain.Common;
 using Eateries.Domain.Enums;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace Eateries.Domain.Entities
 {

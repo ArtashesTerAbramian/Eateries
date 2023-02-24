@@ -1,7 +1,4 @@
-﻿using Eateries.Application.Interfaces;
-using Eateries.Domain.Entities;
-//using Eateries.Infrastructure.Shared.Mock;
-using System.Collections.Generic;
+﻿//using Eateries.Infrastructure.Shared.Mock;
 
 namespace Eateries.Infrastructure.Shared.Services
 {

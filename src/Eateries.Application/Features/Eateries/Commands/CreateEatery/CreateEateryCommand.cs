@@ -4,11 +4,6 @@ using Eateries.Application.Wrappers;
 using Eateries.Domain.Entities;
 using Eateries.Domain.Enums;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Eateries.Application.Features.Eateries.Commands.CreateEatery
 {

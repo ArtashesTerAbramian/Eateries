@@ -1,5 +1,4 @@
 ﻿using Eateries.Application.Interfaces;
-using System;
 
 namespace Eateries.Infrastructure.Shared.Services
 {

@@ -7,12 +7,7 @@ using Eateries.Infrastructure.Persistence.Contexts;
 using Eateries.Infrastructure.Persistence.Repository;
 using LinqKit;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Dynamic.Core;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
 namespace Eateries.Infrastructure.Persistence.Repositories

@@ -1,7 +1,5 @@
-﻿using Eateries.Application.Features.Addresses.Commands;
-using Eateries.Application.Features.Addresses.Commands.CreateAddress;
+﻿using Eateries.Application.Features.Addresses.Commands.CreateAddress;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
-using Eateries.Application.Interfaces.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,17 +1,10 @@
 ﻿using AutoMapper;
-using Eateries.Application.Features.Positions.Queries.GetPositions;
 using Eateries.Application.Interfaces;
 using Eateries.Application.Interfaces.Repositories;
 using Eateries.Application.Parameters;
 using Eateries.Application.Wrappers;
 using Eateries.Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Eateries.Application.Features.Addresses.Queries.GetAddresses
 {

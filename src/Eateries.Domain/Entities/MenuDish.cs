@@ -1,7 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Eateries.Domain.Common;
-
 namespace Eateries.Domain.Entities;
 
 public class MenuDish
