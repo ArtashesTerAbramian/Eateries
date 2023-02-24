@@ -22,6 +22,7 @@ namespace Eateries.Application
             services.AddScoped<IDataShapeHelper<Menu>, DataShapeHelper<Menu>>();
             services.AddScoped<IDataShapeHelper<Eatery>, DataShapeHelper<Eatery>>();
             services.AddScoped<IDataShapeHelper<User>, DataShapeHelper<User>>();
+            services.AddScoped<IDataShapeHelper<Cuisine>, DataShapeHelper<Cuisine>>();
             //services.AddScoped<IMockData, MockData>();
         }
     }

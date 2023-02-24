@@ -20,11 +20,11 @@ namespace Eateries.WebApi.Controllers.v1
             return Ok(res);
         }
 
-        [HttpGet("{id}", Name = "Get")]
+        /*[HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
-        }
+        }*/
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateUserCommand command)

@@ -38,22 +38,21 @@ namespace Eateries.Application.Features.Eateries.Queries.GetEateries
         {
 
             var validFilter = request;
-            //filtered fields security
+            
             if (!string.IsNullOrEmpty(validFilter.Fields))
             {
-                //limit to fields in view model
+                
                 validFilter.Fields = _modelHelper.ValidateModelFields<GetEateriesViewModel>(validFilter.Fields);
             }
             if (string.IsNullOrEmpty(validFilter.Fields))
             {
-                //default fields from view model
                 validFilter.Fields = _modelHelper.GetModelFields<GetEateriesViewModel>();
             }
-            // query based on filter
+            
             var entityEateries = await _eateryRepositoryAsync.GetPagedEateriesReponseAsync(validFilter);
             var data = entityEateries.data;
             RecordsCount recordCount = entityEateries.recordsCount;
-            // response wrapper
+            
             return new PagedResponse<IEnumerable<Entity>>(data, validFilter.PageNumber, validFilter.PageSize, recordCount);
         }
     }

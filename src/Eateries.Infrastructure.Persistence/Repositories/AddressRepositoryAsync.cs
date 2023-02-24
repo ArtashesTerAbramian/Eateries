@@ -23,8 +23,11 @@ namespace Eateries.Infrastructure.Persistence.Repositories
         private readonly IDataShapeHelper<Address> _dataShaper;
         private readonly ILogger<AddressRepositoryAsync> _logger;
         private readonly DbSet<Address> _address;
-        public AddressRepositoryAsync(ApplicationDbContext dbContext,
-             IDataShapeHelper<Address> dataShaper, ILogger<AddressRepositoryAsync> logger)
+
+        public AddressRepositoryAsync(
+            ApplicationDbContext dbContext,
+            IDataShapeHelper<Address> dataShaper,
+            ILogger<AddressRepositoryAsync> logger)
             : base(dbContext, logger)
         {
             this._dbContext = dbContext;
@@ -33,7 +36,8 @@ namespace Eateries.Infrastructure.Persistence.Repositories
             _logger = logger;
         }
 
-        public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedAddressReponseAsync(GetAddressQuery requestParameter)
+        public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedAddressReponseAsync(
+            GetAddressQuery requestParameter)
         {
             var addressStreet = requestParameter.Street;
             var addressCountry = requestParameter.Country;
@@ -77,6 +81,7 @@ namespace Eateries.Infrastructure.Persistence.Repositories
             {
                 result = result.Select<Address>("new(" + fields + ")");
             }
+
             // paging
             result = result
                 .Skip((pageNumber - 1) * pageSize)
@@ -91,8 +96,8 @@ namespace Eateries.Infrastructure.Persistence.Repositories
         }
 
         private void FilterByColumn(
-            ref IQueryable<Address> addresses, 
-            string addressNumber, 
+            ref IQueryable<Address> addresses,
+            string addressNumber,
             string addressTitle,
             string addressCity)
         {
