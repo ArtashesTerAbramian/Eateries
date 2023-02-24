@@ -1,6 +1,4 @@
 ﻿using Eateries.Application.Interfaces;
-using System;
-using System.Linq;
 
 namespace Eateries.Application.Helpers
 {

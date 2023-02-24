@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Eateries.Application.Features.Positions.Queries.GetPositions
+﻿namespace Eateries.Application.Features.Positions.Queries.GetPositions
 {
     public class GetPositionsViewModel
     {

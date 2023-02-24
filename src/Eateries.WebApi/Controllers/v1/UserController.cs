@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Eateries.Application.Features.User.Commands.CreateUser;
 using Eateries.Application.Features.User.Queries.GetUsers;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eateries.WebApi.Controllers.v1

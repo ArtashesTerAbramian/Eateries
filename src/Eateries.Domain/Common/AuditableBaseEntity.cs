@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Eateries.Domain.Common
+﻿namespace Eateries.Domain.Common
 {
     public abstract class AuditableBaseEntity : BaseEntity
     {

@@ -1,5 +1,4 @@
 using AutoMapper;
-using Eateries.Application.Features.Eateries.Queries.GetEateries;
 using Eateries.Application.Interfaces;
 using Eateries.Application.Interfaces.Repositories;
 using Eateries.Application.Parameters;

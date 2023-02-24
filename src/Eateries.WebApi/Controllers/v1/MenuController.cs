@@ -1,9 +1,6 @@
-﻿using Eateries.Application.Features.Menues.Commands;
-using Eateries.Application.Features.Menues.Commands.CreateMenu;
-using Eateries.Application.Features.Menues.Queries;
+﻿using Eateries.Application.Features.Menues.Commands.CreateMenu;
 using Eateries.Application.Features.Menues.Queries.GetMenuById;
 using Eateries.Application.Features.Menues.Queries.GetMenus;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

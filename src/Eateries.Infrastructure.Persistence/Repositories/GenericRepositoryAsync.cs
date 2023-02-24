@@ -2,7 +2,6 @@
 using Eateries.Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Dynamic.Core;
-using Eateries.Application.Exceptions;
 using Microsoft.Extensions.Logging;
 
 namespace Eateries.Infrastructure.Persistence.Repository

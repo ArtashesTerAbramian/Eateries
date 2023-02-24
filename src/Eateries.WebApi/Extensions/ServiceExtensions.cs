@@ -1,9 +1,6 @@
-﻿using IdentityServer4.AccessTokenValidation;
-using Microsoft.OpenApi.Models;
-using System.Runtime.CompilerServices;
+﻿using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json;
-using Eateries.Domain.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 

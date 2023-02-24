@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Eateries.Application.Interfaces
+﻿namespace Eateries.Application.Interfaces
 {
     public interface IDateTimeService
     {

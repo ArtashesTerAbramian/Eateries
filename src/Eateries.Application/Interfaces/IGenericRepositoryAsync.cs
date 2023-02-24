@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-namespace Eateries.Application.Interfaces
+﻿namespace Eateries.Application.Interfaces
 {
     public interface IGenericRepositoryAsync<T> where T : class
     {
