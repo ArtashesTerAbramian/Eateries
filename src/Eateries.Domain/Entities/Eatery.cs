@@ -13,14 +13,13 @@ namespace Eateries.Domain.Entities
 {
     public class Eatery : AuditableBaseEntity
     {
-        [Key]
-        public override Guid Id { get; set; }
-
         public string Name { get; set; }
 
         public string? Description { get; set; }
-        public ICollection<Menu> Menus { get; set; }
-        public ICollection<Address> Addresses { get; set; }
+        public List<Menu> Menus { get; set; }
+        public List<Address> Addresses { get; set; }
+        public List<Order> Orders { get; set; }
+        public List<OrderHistory> OrderHistories { get; set; }
         public EateryType? EateryType { get; set; }
 
         public int? PlaceCount { get; set; }

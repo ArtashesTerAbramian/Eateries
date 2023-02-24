@@ -6,8 +6,6 @@ namespace Eateries.Domain.Entities;
 
 public class Dish : AuditableBaseEntity
 {
-    [Key]
-    public override Guid Id { get; set; }
     public string Name { get; set; }
 
     public int TimeMins { get; set; }
@@ -26,6 +24,6 @@ public class Dish : AuditableBaseEntity
 
     public string ImageUrl { get; set; }
 
-    public ICollection<MenuDish> MenuDishes { get; set; }
-    public ICollection<DishIngredient> DishIngredients { get; set; }
+    public List<MenuDish> MenuDishes { get; set; }
+    public List<DishIngredient> DishIngredients { get; set; }
 }
