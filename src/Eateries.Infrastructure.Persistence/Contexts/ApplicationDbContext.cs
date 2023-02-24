@@ -179,13 +179,7 @@ namespace Eateries.Infrastructure.Persistence.Contexts
             #endregion
 
             #region Cuisine
-
-            modelBuilder.Entity<Cuisine>().HasData(
-                new Cuisine { Id = new Guid("a5b0f2b7-5e98-4a7c-836f-0c7a1b9a88b7"), CuisineName = "European" },
-                new Cuisine { Id = new Guid("c58f23af-65e4-4ca1-9fb4-6b1dfc7a48a8"), CuisineName = "Armenian" },
-                new Cuisine { Id = new Guid("f43a5871-1037-4ef5-ae6d-d08e1b5c7461"), CuisineName = "Russian" }
-            );
-
+            
             modelBuilder.Entity<Cuisine>()
                 .HasKey(p => p.Id);
 
