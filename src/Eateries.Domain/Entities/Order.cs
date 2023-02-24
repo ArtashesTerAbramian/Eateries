@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Eateries.Domain.Common;
 using Eateries.Domain.Enums;
 
@@ -13,6 +14,8 @@ public class Order : AuditableBaseEntity
     
     public DateTime OrderDate { get; set; }
     public decimal TotalCost { get; set; }
+    
+    [EnumDataType(typeof(OrderStatus))]
     public OrderStatus Status { get; set; }
     public DateTime CompletedDate { get; set; }
     public List<Dish> Dishes { get; set; }

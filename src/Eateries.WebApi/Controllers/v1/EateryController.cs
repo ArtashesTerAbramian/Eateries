@@ -12,21 +12,18 @@ namespace Eateries.WebApi.Controllers.v1
     [ApiController]
     public class EateryController : BaseApiController
     {
-        // GET: api/<EateryController>
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetEateriesQuery filter)
         {
             return Ok(await Mediator.Send(filter));
         }
 
-        // GET api/<EateryController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<EateryController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateEateryCommand command)
         {
@@ -34,13 +31,11 @@ namespace Eateries.WebApi.Controllers.v1
             return CreatedAtAction(nameof(Post), resp);
         }
 
-        // PUT api/<EateryController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<EateryController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

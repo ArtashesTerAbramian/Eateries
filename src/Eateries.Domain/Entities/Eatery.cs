@@ -20,6 +20,8 @@ namespace Eateries.Domain.Entities
         public List<Address> Addresses { get; set; }
         public List<Order> Orders { get; set; }
         public List<OrderHistory> OrderHistories { get; set; }
+        
+        [EnumDataType(typeof(EateryType))]
         public EateryType? EateryType { get; set; }
 
         public int? PlaceCount { get; set; }
