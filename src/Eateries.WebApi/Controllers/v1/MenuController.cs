@@ -14,7 +14,6 @@ namespace Eateries.WebApi.Controllers.v1
     [ApiController]
     public class MenuController : BaseApiController
     {
-        // GET: api/<MenuController>
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetMenuQuery query)
         {
@@ -22,14 +21,12 @@ namespace Eateries.WebApi.Controllers.v1
             return Ok(resp);
         }
 
-        // GET api/<MenuController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(Guid id)
         {
             return Ok(await Mediator.Send(new GetMenuByIdQuery{ Id = id }));
         }
 
-        // POST api/<MenuController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateMenuCommand value)
         {
@@ -37,13 +34,11 @@ namespace Eateries.WebApi.Controllers.v1
             return CreatedAtAction(nameof(Post), resp);
         }
 
-        // PUT api/<MenuController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<MenuController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

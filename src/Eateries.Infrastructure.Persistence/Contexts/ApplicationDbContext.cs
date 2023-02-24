@@ -216,12 +216,6 @@ namespace Eateries.Infrastructure.Persistence.Contexts
                 .HasDefaultValueSql("NEWID()");
 
             modelBuilder.Entity<Order>()
-                .Property(oh => oh.Status)
-                .HasConversion(
-                    s => s.ToString(),
-                    s => (OrderStatus)Enum.Parse(typeof(OrderStatus), s));
-
-            modelBuilder.Entity<Order>()
                 .HasOne(p => p.Eatery)
                 .WithMany(p => p.Orders)
                 .HasForeignKey(et => et.EateryId)
@@ -243,12 +237,6 @@ namespace Eateries.Infrastructure.Persistence.Contexts
             modelBuilder.Entity<OrderHistory>()
                 .Property(p => p.Id)
                 .HasDefaultValueSql("NEWID()");
-
-            modelBuilder.Entity<OrderHistory>()
-                .Property(oh => oh.Status)
-                .HasConversion(
-                    s => s.ToString(),
-                    s => (OrderStatus)Enum.Parse(typeof(OrderStatus), s));
 
             modelBuilder.Entity<OrderHistory>()
                 .HasOne(p => p.Eatery)

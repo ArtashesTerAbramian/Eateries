@@ -13,7 +13,6 @@ namespace Eateries.WebApi.Controllers.v1
     [ApiController]
     public class UserController : BaseApiController
     {
-        // GET: api/User
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery] GetUsersQuery query)
         {
@@ -21,14 +20,12 @@ namespace Eateries.WebApi.Controllers.v1
             return Ok(res);
         }
 
-        // GET: api/User/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: api/User
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateUserCommand command)
         {
@@ -36,13 +33,11 @@ namespace Eateries.WebApi.Controllers.v1
             return CreatedAtAction(nameof(Post), resp);
         }
 
-        // PUT: api/User/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE: api/User/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
