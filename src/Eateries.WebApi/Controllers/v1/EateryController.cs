@@ -13,9 +13,9 @@ namespace Eateries.WebApi.Controllers.v1
     public class EateryController : BaseApiController
     {
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetEateriesQuery filter)
+        public async Task<IActionResult> Get([FromQuery] GetEateriesQuery query)
         {
-            return Ok(await Mediator.Send(filter));
+            return Ok(await Mediator.Send(query));
         }
 
         [HttpGet("{id}")]
