@@ -1,4 +1,5 @@
 ﻿using Eateries.Application.Features.Addresses.Commands.CreateAddress;
+using Eateries.Application.Features.Addresses.Queries.GetAddressById;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +10,7 @@ namespace Eateries.WebApi.Controllers.v1
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    // [Authorize]
     public class AddressController : BaseApiController
     {
         // GET: api/<AddressController>
@@ -21,9 +22,9 @@ namespace Eateries.WebApi.Controllers.v1
 
         // GET api/<AddressController>/5
         [HttpGet("{id}")]
-        public string Get(Guid id)
+        public async Task<IActionResult> GetAddressById(Guid id)
         {
-            return "value";
+            return Ok(await Mediator.Send(new GetAddressById { Id = id }));
         }
 
         // POST api/<AddressController>
