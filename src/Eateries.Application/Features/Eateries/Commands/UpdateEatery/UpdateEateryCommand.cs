@@ -4,7 +4,7 @@ using Eateries.Application.Wrappers;
 using Eateries.Domain.Enums;
 using MediatR;
 
-namespace Eateries.Application.Features.Eateries.Commands.UpdateEateryCommand;
+namespace Eateries.Application.Features.Eateries.Commands.UpdateEatery;
 
 public class UpdateEateryCommand : IRequest<Response<Guid>>
 {

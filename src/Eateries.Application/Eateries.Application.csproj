@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="Features\Cuisines\Commands" />
+    <Folder Include="Features\Eateries\Commands\DeleteEatery" />
   </ItemGroup>
 
 </Project>

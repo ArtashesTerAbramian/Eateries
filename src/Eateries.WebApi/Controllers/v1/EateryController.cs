@@ -1,5 +1,5 @@
 ﻿using Eateries.Application.Features.Eateries.Commands.CreateEatery;
-using Eateries.Application.Features.Eateries.Commands.UpdateEateryCommand;
+using Eateries.Application.Features.Eateries.Commands.UpdateEatery;
 using Eateries.Application.Features.Eateries.Queries.GetEateries;
 using Eateries.Application.Features.Eateries.Queries.GetEateryById;
 using Microsoft.AspNetCore.Mvc;

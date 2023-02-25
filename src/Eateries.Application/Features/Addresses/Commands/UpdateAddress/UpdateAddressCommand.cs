@@ -3,7 +3,7 @@ using Eateries.Application.Interfaces.Repositories;
 using Eateries.Application.Wrappers;
 using MediatR;
 
-namespace Eateries.Application.Features.Addresses.Commands.UpdateAddressCommand;
+namespace Eateries.Application.Features.Addresses.Commands.UpdateAddress;
 
 public class UpdateAddressCommand : IRequest<Response<Guid>>
 {
