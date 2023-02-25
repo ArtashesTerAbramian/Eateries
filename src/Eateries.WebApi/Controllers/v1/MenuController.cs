@@ -12,32 +12,32 @@ namespace Eateries.WebApi.Controllers.v1
     public class MenuController : BaseApiController
     {
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetMenuQuery query)
+        public async Task<IActionResult> GetMenuesWuthFilter([FromQuery] GetMenuQuery query)
         {
             var resp = await Mediator.Send(query);
             return Ok(resp);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> GetMenuById(Guid id)
         {
             return Ok(await Mediator.Send(new GetMenuByIdQuery{ Id = id }));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateMenuCommand value)
+        public async Task<IActionResult> AddMenu([FromBody] CreateMenuCommand value)
         {
             var resp = await Mediator.Send(value);
-            return CreatedAtAction(nameof(Post), resp);
+            return CreatedAtAction(nameof(AddMenu), resp);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void UpdateMenu(int id, [FromBody] string value)
         {
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void DeleteMenu(int id)
         {
         }
     }

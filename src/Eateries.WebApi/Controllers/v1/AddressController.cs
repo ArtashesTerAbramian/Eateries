@@ -14,7 +14,7 @@ namespace Eateries.WebApi.Controllers.v1
     {
         // GET: api/<AddressController>
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetAddressQuery filter)
+        public async Task<IActionResult> GetAddressesWithFilter([FromQuery] GetAddressQuery filter)
         {
             return Ok(await Mediator.Send(filter));
         }
@@ -28,21 +28,21 @@ namespace Eateries.WebApi.Controllers.v1
 
         // POST api/<AddressController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateAddressCommand command)
+        public async Task<IActionResult> CreateAddress([FromBody] CreateAddressCommand command)
         {
             var resp = await Mediator.Send(command);
-            return CreatedAtAction(nameof(Post), resp);
+            return CreatedAtAction(nameof(CreateAddress), resp);
         }
 
         // PUT api/<AddressController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void UpdateAddress(int id, [FromBody] string value)
         {
         }
 
         // DELETE api/<AddressController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void DeleteAddress(int id)
         {
         }
     }

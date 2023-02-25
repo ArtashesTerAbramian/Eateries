@@ -9,7 +9,7 @@ namespace Eateries.WebApi.Controllers.v1
     {
         // GET: api/Cuisine
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetCuisinesQuery query)
+        public async Task<IActionResult> GetCuisinesWithFilter([FromQuery] GetCuisinesQuery query)
         {
             return Ok(await Mediator.Send(query));
         }
@@ -23,19 +23,19 @@ namespace Eateries.WebApi.Controllers.v1
 
         // POST: api/Cuisine
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void AddCuisine([FromBody] string value)
         {
         }
 
         // PUT: api/Cuisine/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void UpdateCuisine(int id, [FromBody] string value)
         {
         }
 
         // DELETE: api/Cuisine/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void DeleteCuisine(int id)
         {
         }
     }
