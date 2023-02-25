@@ -1,4 +1,5 @@
 ﻿using Eateries.Application.Features.Addresses.Commands.CreateAddress;
+using Eateries.Application.Features.Addresses.Queries.DeleteAddressById;
 using Eateries.Application.Features.Addresses.Queries.GetAddressById;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Microsoft.AspNetCore.Authorization;
@@ -43,8 +44,9 @@ namespace Eateries.WebApi.Controllers.v1
 
         // DELETE api/<AddressController>/5
         [HttpDelete("{id}")]
-        public void DeleteAddress(int id)
+        public async Task<IActionResult> DeleteAddress(Guid id)
         {
+            return Ok(await Mediator.Send(new DeleteAddressByIdCommand { Id = id }));
         }
     }
 }
