@@ -3,7 +3,7 @@ using Eateries.Application.Interfaces.Repositories;
 using Eateries.Application.Wrappers;
 using MediatR;
 
-namespace Eateries.Application.Features.Addresses.Queries.DeleteAddressById;
+namespace Eateries.Application.Features.Addresses.Commands.DeleteAddressById;
 
 public class DeleteAddressByIdCommand : IRequest<Response<Guid>>
 {

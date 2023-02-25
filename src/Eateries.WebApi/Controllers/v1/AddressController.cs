@@ -1,5 +1,6 @@
 ﻿using Eateries.Application.Features.Addresses.Commands.CreateAddress;
-using Eateries.Application.Features.Addresses.Queries.DeleteAddressById;
+using Eateries.Application.Features.Addresses.Commands.DeleteAddressById;
+using Eateries.Application.Features.Addresses.Commands.UpdateAddressCommand;
 using Eateries.Application.Features.Addresses.Queries.GetAddressById;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Microsoft.AspNetCore.Authorization;
@@ -38,8 +39,11 @@ namespace Eateries.WebApi.Controllers.v1
 
         // PUT api/<AddressController>/5
         [HttpPut("{id}")]
-        public void UpdateAddress(int id, [FromBody] string value)
+        public async Task<IActionResult> UpdateAddress(Guid id, [FromBody] UpdateAddressCommand command)
         {
+            if (id != command.Id)
+                return BadRequest();
+            return Ok(await Mediator.Send(command));
         }
 
         // DELETE api/<AddressController>/5
