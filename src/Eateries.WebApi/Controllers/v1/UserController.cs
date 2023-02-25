@@ -1,4 +1,5 @@
 using Eateries.Application.Features.User.Commands.CreateUser;
+using Eateries.Application.Features.User.Queries.GetUserByIdQuery;
 using Eateries.Application.Features.User.Queries.GetUsers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,11 +16,11 @@ namespace Eateries.WebApi.Controllers.v1
             return Ok(res);
         }
 
-        /*[HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}", Name = "Get")]
+        public async Task<IActionResult> GetUserById(Guid id)
         {
-            return "value";
-        }*/
+            return Ok(await Mediator.Send(new GetUserByIdQuery { Id = id }));
+        }
 
         [HttpPost]
         public async Task<IActionResult> AddUser([FromBody] CreateUserCommand command)
