@@ -1,5 +1,6 @@
 ﻿using Eateries.Application.Features.Eateries.Commands.CreateEatery;
 using Eateries.Application.Features.Eateries.Queries.GetEateries;
+using Eateries.Application.Features.Eateries.Queries.GetEateryById;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,9 +18,9 @@ namespace Eateries.WebApi.Controllers.v1
         }
 
         [HttpGet("{id}")]
-        public string GetEateryById(int id)
+        public async Task<IActionResult> GetEateryById(Guid id)
         {
-            return "value";
+            return Ok(await Mediator.Send(new GetEateryByQueryId { Id = id }));
         }
 
         [HttpPost]
