@@ -1,6 +1,6 @@
 ﻿using Eateries.Application.Features.Addresses.Commands.CreateAddress;
 using Eateries.Application.Features.Addresses.Commands.DeleteAddressById;
-using Eateries.Application.Features.Addresses.Commands.UpdateAddressCommand;
+using Eateries.Application.Features.Addresses.Commands.UpdateAddress;
 using Eateries.Application.Features.Addresses.Queries.GetAddressById;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Microsoft.AspNetCore.Authorization;
