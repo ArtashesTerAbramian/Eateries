@@ -1,4 +1,5 @@
 using Eateries.Application.Features.User.Commands.CreateUser;
+using Eateries.Application.Features.User.Commands.DeleteUser;
 using Eateries.Application.Features.User.Commands.UpdateUser;
 using Eateries.Application.Features.User.Queries.GetUserByIdQuery;
 using Eateries.Application.Features.User.Queries.GetUsers;
@@ -39,8 +40,9 @@ namespace Eateries.WebApi.Controllers.v1
         }
 
         [HttpDelete("{id}")]
-        public void DeleteUser(int id)
+        public  async Task<IActionResult> DeleteUser(Guid id)
         {
+            return Ok(await Mediator.Send(new DeleteUserCommand { Id = id }));
         }
     }
 }
