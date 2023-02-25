@@ -1,4 +1,5 @@
 ﻿using Eateries.Application.Features.Eateries.Commands.CreateEatery;
+using Eateries.Application.Features.Eateries.Commands.DeleteEatery;
 using Eateries.Application.Features.Eateries.Commands.UpdateEatery;
 using Eateries.Application.Features.Eateries.Queries.GetEateries;
 using Eateries.Application.Features.Eateries.Queries.GetEateryById;
@@ -40,8 +41,9 @@ namespace Eateries.WebApi.Controllers.v1
         }
 
         [HttpDelete("{id}")]
-        public void DeleteEatery(int id)
+        public async Task<IActionResult> DeleteEatery(Guid id)
         {
+            return Ok(await Mediator.Send(new DeleteEateryByIdCommand { Id = id }));
         }
     }
 }
