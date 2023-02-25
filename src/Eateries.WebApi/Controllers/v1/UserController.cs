@@ -9,7 +9,7 @@ namespace Eateries.WebApi.Controllers.v1
     public class UserController : BaseApiController
     {
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetUsersQuery query)
+        public async Task<IActionResult> GetUsersWithFilter([FromQuery] GetUsersQuery query)
         {
             var res = await Mediator.Send(query);
             return Ok(res);
@@ -22,19 +22,19 @@ namespace Eateries.WebApi.Controllers.v1
         }*/
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateUserCommand command)
+        public async Task<IActionResult> AddUser([FromBody] CreateUserCommand command)
         {
             var resp = await Mediator.Send(command);
-            return CreatedAtAction(nameof(Post), resp);
+            return CreatedAtAction(nameof(AddUser), resp);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void UpdateUser(int id, [FromBody] string value)
         {
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void DeleteUser(int id)
         {
         }
     }

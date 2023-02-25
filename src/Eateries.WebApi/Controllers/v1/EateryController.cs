@@ -11,31 +11,31 @@ namespace Eateries.WebApi.Controllers.v1
     public class EateryController : BaseApiController
     {
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetEateriesQuery query)
+        public async Task<IActionResult> GetEateriesWithFilter([FromQuery] GetEateriesQuery query)
         {
             return Ok(await Mediator.Send(query));
         }
 
         [HttpGet("{id}")]
-        public string Get(int id)
+        public string GetEateryById(int id)
         {
             return "value";
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateEateryCommand command)
+        public async Task<IActionResult> AddEatery([FromBody] CreateEateryCommand command)
         {
             var resp = await Mediator.Send(command);
-            return CreatedAtAction(nameof(Post), resp);
+            return CreatedAtAction(nameof(AddEatery), resp);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void UpdateEatery(int id, [FromBody] string value)
         {
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void DeleteEatery(int id)
         {
         }
     }
