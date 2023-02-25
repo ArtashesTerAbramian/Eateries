@@ -1,6 +1,7 @@
 using AutoMapper;
 using Eateries.Application.Exceptions;
 using Eateries.Application.Interfaces.Repositories;
+using Eateries.Application.Services;
 using Eateries.Application.Wrappers;
 using MediatR;
 
@@ -31,16 +32,14 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, Respo
         {
             throw new ApiException("The user with this email already exists");
         }
+        var hasher = new PasswordHashingService();
         
-        string password = request.Password;
-        _userRepositoryAsync.CreatePasswordHash(password, out string passwordHash, out string passwordSalt);
-
-       
         user = _mapper.Map<Domain.Entities.User>(request);
-        user.PasswordHash = passwordHash;
-        user.PasswordSalt = passwordSalt;
+        user.PasswordHash = hasher.HashPassword(request.Password);
         user.IsActive = true;
+        
         await _userRepositoryAsync.AddAsync(user);
+
         
         return new Response<Guid>(user.Id);
     }

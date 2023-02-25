@@ -1,4 +1,7 @@
 using Eateries.Application.Features.User.Commands.CreateUser;
+using Eateries.Application.Features.User.Commands.DeleteUser;
+using Eateries.Application.Features.User.Commands.UpdateUser;
+using Eateries.Application.Features.User.Queries.GetUserByIdQuery;
 using Eateries.Application.Features.User.Queries.GetUsers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,11 +18,11 @@ namespace Eateries.WebApi.Controllers.v1
             return Ok(res);
         }
 
-        /*[HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}", Name = "Get")]
+        public async Task<IActionResult> GetUserById(Guid id)
         {
-            return "value";
-        }*/
+            return Ok(await Mediator.Send(new GetUserByIdQuery { Id = id }));
+        }
 
         [HttpPost]
         public async Task<IActionResult> AddUser([FromBody] CreateUserCommand command)
@@ -29,13 +32,17 @@ namespace Eateries.WebApi.Controllers.v1
         }
 
         [HttpPut("{id}")]
-        public void UpdateUser(int id, [FromBody] string value)
+        public async Task<IActionResult> UpdateUser(Guid id, [FromBody] UpdateUserCommand command)
         {
+            if (id != command.Id)
+                return BadRequest();
+            return Ok(await Mediator.Send(command));
         }
 
         [HttpDelete("{id}")]
-        public void DeleteUser(int id)
+        public  async Task<IActionResult> DeleteUser(Guid id)
         {
+            return Ok(await Mediator.Send(new DeleteUserCommand { Id = id }));
         }
     }
 }

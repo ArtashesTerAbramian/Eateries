@@ -117,9 +117,6 @@ namespace Eateries.Infrastructure.Persistence.Contexts
                 .Property(u => u.PasswordHash)
                 .HasMaxLength(255);
 
-            modelBuilder.Entity<User>()
-                .Ignore(u => u.PasswordSalt);
-
             #endregion
 
             #region Dish
