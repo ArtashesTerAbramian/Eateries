@@ -47,9 +47,9 @@ namespace Eateries.Application.Features.Menues.Queries.GetMenus
                 validFilter.Fields = _modelHelper.GetModelFields<GetMenuViewModel>();
             }
             // query based on filter
-            var entityPositions = await _menuRepositoryAsync.GetPagedMenuesReponseAsync(validFilter);
-            var data = entityPositions.data;
-            RecordsCount recordCount = entityPositions.recordsCount;
+            var entityMenus = await _menuRepositoryAsync.GetPagedMenuesReponseAsync(validFilter);
+            var data = entityMenus.data;
+            RecordsCount recordCount = entityMenus.recordsCount;
 
             return new PagedResponse<IEnumerable<Entity>>(data, validFilter.PageNumber, validFilter.PageSize, recordCount);
         }

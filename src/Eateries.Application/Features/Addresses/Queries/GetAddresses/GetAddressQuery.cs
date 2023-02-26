@@ -49,9 +49,9 @@ namespace Eateries.Application.Features.Addresses.Queries.GetAddresses
                 validFilter.Fields = _modelHelper.GetModelFields<GetAddressViewModel>();
             }
             // query based on filter
-            var entityPositions = await _addressRepositoryAsync.GetPagedAddressReponseAsync(validFilter);
-            var data = entityPositions.data;
-            RecordsCount recordCount = entityPositions.recordsCount;
+            var entityAddress = await _addressRepositoryAsync.GetPagedAddressReponseAsync(validFilter);
+            var data = entityAddress.data;
+            RecordsCount recordCount = entityAddress.recordsCount;
             // response wrapper
             return new PagedResponse<IEnumerable<Entity>>(data, validFilter.PageNumber, validFilter.PageSize, recordCount);
         }

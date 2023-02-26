@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3287C3EA-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrasturcture", "Infrasturcture", "{D71D8626-5B17-49C2-83E5-817EA4AEF39F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{940FC020-5BCA-4ED8-83BE-A7624E985AD6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{940FC020-5BCA-4ED8-83BE-A7624E985AD6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eateries.Application", "src\Eateries.Application\Eateries.Application.csproj", "{90F966DE-D2A6-4A09-AE94-437809638A0F}"
 EndProject
