@@ -1,3 +1,4 @@
+using Eateries.Application.Features.Orders.Commands.CreateOrder;
 using Eateries.Application.Interfaces;
 using Eateries.Application.Interfaces.Repositories;
 using Eateries.Domain.Entities;
@@ -26,8 +27,4 @@ public class OrderRepositoryAsync : GenericRepositoryAsync<Order>, IOrderReposit
         _logger = logger;
     }
 
-    public Task<Guid> AddAnOrderAsync(Order order, List<Dish> dishes)
-    {
-        throw new NotImplementedException();
-    }
 }
