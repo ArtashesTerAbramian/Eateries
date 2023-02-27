@@ -6,6 +6,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using Eateries.Application.Interfaces.Repositories;
 
 namespace Eateries.Application
 {
@@ -23,6 +24,8 @@ namespace Eateries.Application
             services.AddScoped<IDataShapeHelper<Eatery>, DataShapeHelper<Eatery>>();
             services.AddScoped<IDataShapeHelper<User>, DataShapeHelper<User>>();
             services.AddScoped<IDataShapeHelper<Cuisine>, DataShapeHelper<Cuisine>>();
+            services.AddScoped<IDataShapeHelper<Order>, DataShapeHelper<Order>>();
+            services.AddScoped<IDataShapeHelper<Dish>, DataShapeHelper<Dish>>();
             //services.AddScoped<IMockData, MockData>();
         }
     }

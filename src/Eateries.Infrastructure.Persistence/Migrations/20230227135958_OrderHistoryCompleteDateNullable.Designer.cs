@@ -4,6 +4,7 @@ using Eateries.Infrastructure.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Eateries.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230227135958_OrderHistoryCompleteDateNullable")]
+    partial class OrderHistoryCompleteDateNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +51,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("EateryId");
 
-                    b.ToTable("Addresses", (string)null);
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.Cuisine", b =>
@@ -80,7 +83,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cuisines", (string)null);
+                    b.ToTable("Cuisines");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.Dish", b =>
@@ -135,7 +138,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("CuisineId");
 
-                    b.ToTable("Dishes", (string)null);
+                    b.ToTable("Dishes");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.DishIngredient", b =>
@@ -150,7 +153,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("IngredientId");
 
-                    b.ToTable("DishIngredients", (string)null);
+                    b.ToTable("DishIngredients");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.Eatery", b =>
@@ -190,7 +193,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Eateries", (string)null);
+                    b.ToTable("Eateries");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.Ingredient", b =>
@@ -218,7 +221,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Ingredients", (string)null);
+                    b.ToTable("Ingredients");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.Menu", b =>
@@ -254,7 +257,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("EateryId");
 
-                    b.ToTable("Menus", (string)null);
+                    b.ToTable("Menus");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.MenuDish", b =>
@@ -269,7 +272,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("MenuId");
 
-                    b.ToTable("MenuDishes", (string)null);
+                    b.ToTable("MenuDishes");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.Order", b =>
@@ -315,7 +318,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.OrderDish", b =>
@@ -333,7 +336,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("DishId");
 
-                    b.ToTable("OrderDishes", (string)null);
+                    b.ToTable("OrderDishes");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.OrderHistory", b =>
@@ -376,7 +379,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderHistories", (string)null);
+                    b.ToTable("OrderHistories");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.User", b =>
@@ -415,7 +418,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.Address", b =>

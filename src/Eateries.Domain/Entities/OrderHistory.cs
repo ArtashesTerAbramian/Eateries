@@ -16,5 +16,5 @@ public class OrderHistory : AuditableBaseEntity
     
     [EnumDataType(typeof(OrderStatus))]
     public OrderStatus Status { get; set; }
-    public DateTime CompletedDate { get; set; }
+    public DateTime? CompletedDate { get; set; }
 }

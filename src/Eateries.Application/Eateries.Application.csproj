@@ -21,6 +21,8 @@
 
   <ItemGroup>
     <Folder Include="Features\Cuisines\Commands" />
+    <Folder Include="Features\Dishes\Queries" />
+    <Folder Include="Features\Orders\Queries" />
   </ItemGroup>
 
 </Project>
