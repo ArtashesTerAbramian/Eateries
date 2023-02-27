@@ -1,5 +1,6 @@
 using AutoMapper;
 using Eateries.Application.DTOs;
+using Eateries.Application.Exceptions;
 using Eateries.Application.Interfaces.Repositories;
 using Eateries.Application.Wrappers;
 using Eateries.Domain.Entities;
@@ -49,7 +50,7 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Res
             var dish = await _dishRepositoryAsync.GetByIdAsync(orderDishDto.DishId);
             if (dish == null)
             {
-                throw new Exception($"Dish with id {orderDishDto.DishId} not found");
+                throw new ApiException($"Dish with id {orderDishDto.DishId} not found");
             }
 
             var orderDish = new OrderDish
