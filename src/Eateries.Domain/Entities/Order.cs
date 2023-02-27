@@ -13,11 +13,13 @@ public class Order : AuditableBaseEntity
     public Eatery Eatery { get; set; }
     
     public DateTime OrderDate { get; set; }
+    
     public decimal TotalCost { get; set; }
     
     [EnumDataType(typeof(OrderStatus))]
     public OrderStatus Status { get; set; }
+    
     public DateTime CompletedDate { get; set; }
-    public List<Dish> Dishes { get; set; }
     public List<OrderHistory> OrderHistories { get; set; }
+    public List<OrderDish> OrderDishes { get; set; }
 }

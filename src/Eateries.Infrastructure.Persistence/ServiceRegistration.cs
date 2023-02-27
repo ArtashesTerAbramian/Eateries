@@ -4,6 +4,7 @@ using Eateries.Application.Interfaces.Repositories;
 using Eateries.Infrastructure.Persistence.Contexts;
 using Eateries.Infrastructure.Persistence.Repositories;
 using Eateries.Infrastructure.Persistence.Repository;
+using Eateries.Infrastructure.Persistence.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,7 @@ namespace Eateries.Infrastructure.Persistence
             services.AddTransient<IEateryRepositoryAsync, EateryRepositoryAsync>();
             services.AddTransient<IUserRepositoryAsync, UserRepositoryAsync>();
             services.AddTransient<ICuisineRepositoryAsync, CuisineRepositoryAsync>();
+            services.AddTransient<IGenerateDishSuggestionAsync, GenerateDishSuggestionAsync>();
             /* services.AddTransient<IPositionRepositoryAsync, PositionRepositoryAsync>();
              services.AddTransient<IEmployeeRepositoryAsync, EmployeeRepositoryAsync>();*/
 

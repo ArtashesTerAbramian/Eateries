@@ -125,9 +125,6 @@ namespace Eateries.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("OrderId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -137,8 +134,6 @@ namespace Eateries.Infrastructure.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CuisineId");
-
-                    b.HasIndex("OrderId");
 
                     b.ToTable("Dishes");
                 });
@@ -323,6 +318,24 @@ namespace Eateries.Infrastructure.Persistence.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("Eateries.Domain.Entities.OrderDish", b =>
+                {
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DishId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderId", "DishId");
+
+                    b.HasIndex("DishId");
+
+                    b.ToTable("OrderDishes");
+                });
+
             modelBuilder.Entity("Eateries.Domain.Entities.OrderHistory", b =>
                 {
                     b.Property<Guid>("Id")
@@ -424,10 +437,6 @@ namespace Eateries.Infrastructure.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Eateries.Domain.Entities.Order", null)
-                        .WithMany("Dishes")
-                        .HasForeignKey("OrderId");
-
                     b.Navigation("Cuisine");
                 });
 
@@ -499,6 +508,25 @@ namespace Eateries.Infrastructure.Persistence.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Eateries.Domain.Entities.OrderDish", b =>
+                {
+                    b.HasOne("Eateries.Domain.Entities.Dish", "Dish")
+                        .WithMany("OrderDishes")
+                        .HasForeignKey("DishId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Eateries.Domain.Entities.Order", "Order")
+                        .WithMany("OrderDishes")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Dish");
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("Eateries.Domain.Entities.OrderHistory", b =>
                 {
                     b.HasOne("Eateries.Domain.Entities.Eatery", "Eatery")
@@ -528,6 +556,8 @@ namespace Eateries.Infrastructure.Persistence.Migrations
                     b.Navigation("DishIngredients");
 
                     b.Navigation("MenuDishes");
+
+                    b.Navigation("OrderDishes");
                 });
 
             modelBuilder.Entity("Eateries.Domain.Entities.Eatery", b =>
@@ -553,7 +583,7 @@ namespace Eateries.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Eateries.Domain.Entities.Order", b =>
                 {
-                    b.Navigation("Dishes");
+                    b.Navigation("OrderDishes");
 
                     b.Navigation("OrderHistories");
                 });

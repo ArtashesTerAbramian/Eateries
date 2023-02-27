@@ -36,7 +36,7 @@ namespace Eateries.Infrastructure.Persistence.Contexts
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderHistory> OrderHistories { get; set; }
         public DbSet<User> Users { get; set; }
-
+        public DbSet<OrderDish> OrderDishes { get; set; }
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableBaseEntity>())
@@ -176,7 +176,7 @@ namespace Eateries.Infrastructure.Persistence.Contexts
             #endregion
 
             #region Cuisine
-            
+
             modelBuilder.Entity<Cuisine>()
                 .HasKey(p => p.Id);
 
@@ -240,6 +240,23 @@ namespace Eateries.Infrastructure.Persistence.Contexts
                 .WithMany(oh => oh.OrderHistories)
                 .HasForeignKey(o => o.OrderId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            #endregion
+
+            #region MyRegion
+
+            modelBuilder.Entity<OrderDish>()
+                .HasKey(od => new { od.OrderId, od.DishId });
+
+            modelBuilder.Entity<OrderDish>()
+                .HasOne(od => od.Order)
+                .WithMany(o => o.OrderDishes)
+                .HasForeignKey(od => od.OrderId);
+
+            modelBuilder.Entity<OrderDish>()
+                .HasOne(od => od.Dish)
+                .WithMany(d => d.OrderDishes)
+                .HasForeignKey(od => od.DishId);
 
             #endregion
 
