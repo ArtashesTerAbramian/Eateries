@@ -40,7 +40,8 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Res
             OrderDate = DateTime.UtcNow,
             TotalCost = 0, // will be updated when dishes are added
             Status = OrderStatus.Pending,
-            OrderHistories = new List<OrderHistory>()
+            OrderHistories = new List<OrderHistory>(),
+            OrderDishes = new List<OrderDish>()
         };
 
         foreach (var orderDishDto in request.OrderDishes)

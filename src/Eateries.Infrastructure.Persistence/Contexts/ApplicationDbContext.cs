@@ -217,6 +217,12 @@ namespace Eateries.Infrastructure.Persistence.Contexts
                 .WithMany(o => o.Orders)
                 .HasForeignKey(u => u.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+            
+            // Configure cascade delete behavior for entities that have triggers
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.OrderHistories)
+                .WithOne()
+                .OnDelete(DeleteBehavior.Restrict);
 
             #endregion
 
