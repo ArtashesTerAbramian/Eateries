@@ -35,7 +35,7 @@ namespace Eateries.Infrastructure.Persistence
             services.AddTransient<IEateryRepositoryAsync, EateryRepositoryAsync>();
             services.AddTransient<IUserRepositoryAsync, UserRepositoryAsync>();
             services.AddTransient<ICuisineRepositoryAsync, CuisineRepositoryAsync>();
-            services.AddTransient<IGenerateDishSuggestionAsync, GenerateDishSuggestionAsync>();
+            services.AddTransient<IMarkovChainFoodSuggestorService, MarkovChainFoodSuggestorService>();
             services.AddTransient<IOrderRepositoryAsync, OrderRepositoryAsync>();
             services.AddTransient<IDishRepositoryAsync, DishRepositoryAsync>();
             services.AddTransient<IIngredientRepositoryAsync, IngredientRepositoryAsync>();

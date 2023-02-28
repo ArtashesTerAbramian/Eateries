@@ -12,9 +12,9 @@ public class GetDishSuggestion : IRequest<Response<List<Dish>>>
 
     public class GetDishSuggestionHandler : IRequestHandler<GetDishSuggestion, Response<List<Dish>>>
     {
-        private readonly IGenerateDishSuggestionAsync _dishSuggestionAsync;
+        private readonly IMarkovChainFoodSuggestorService _dishSuggestionAsync;
 
-        public GetDishSuggestionHandler(IGenerateDishSuggestionAsync dishSuggestionAsync)
+        public GetDishSuggestionHandler(IMarkovChainFoodSuggestorService dishSuggestionAsync)
         {
             _dishSuggestionAsync = dishSuggestionAsync;
         }
@@ -22,7 +22,7 @@ public class GetDishSuggestion : IRequest<Response<List<Dish>>>
         public async Task<Response<List<Dish>>> Handle(GetDishSuggestion request, CancellationToken cancellationToken)
         {
             var suggestion =
-                await _dishSuggestionAsync.GenerateDishSuggestions(request.UserId, request.numOfSuggestions);
+                await _dishSuggestionAsync.SuggestFood(request.UserId, request.numOfSuggestions);
             return new Response<List<Dish>>(suggestion);
         }
     }
