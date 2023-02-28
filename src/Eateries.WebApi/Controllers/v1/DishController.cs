@@ -1,4 +1,5 @@
 using Eateries.Application.Features.Dishes.Commands.CreateDish;
+using Eateries.Application.Features.Dishes.Queries.GetDishes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eateries.WebApi.Controllers.v1
@@ -9,9 +10,9 @@ namespace Eateries.WebApi.Controllers.v1
     {
         // GET: api/Dish
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> GetDishesByFilters([FromQuery] GetDishesQuery filter)
         {
-            return new string[] { "value1", "value2" };
+            return Ok(await Mediator.Send(filter));
         }
 
         /*// GET: api/Dish/5
