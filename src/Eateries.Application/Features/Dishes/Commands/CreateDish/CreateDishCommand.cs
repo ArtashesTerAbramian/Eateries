@@ -5,7 +5,7 @@ using Eateries.Application.Wrappers;
 using Eateries.Domain.Entities;
 using MediatR;
 
-namespace Eateries.Application.Features.Dishes.Commands;
+namespace Eateries.Application.Features.Dishes.Commands.CreateDish;
 
 public class CreateDishCommand : IRequest<Response<Guid>>
 {

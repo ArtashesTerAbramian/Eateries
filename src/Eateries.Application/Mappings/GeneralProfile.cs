@@ -2,7 +2,7 @@
 using Eateries.Application.Features.Addresses.Commands.CreateAddress;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Eateries.Application.Features.Cuisines.Queries.GetCuisines;
-using Eateries.Application.Features.Dishes.Commands;
+using Eateries.Application.Features.Dishes.Commands.CreateDish;
 using Eateries.Application.Features.Eateries.Commands.CreateEatery;
 using Eateries.Application.Features.Eateries.Queries.GetEateries;
 using Eateries.Application.Features.Ingredient.Commands.CreateIngredient;
