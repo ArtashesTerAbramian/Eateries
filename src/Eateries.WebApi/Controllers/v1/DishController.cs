@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Eateries.Application.Features.Dishes.Commands;
-using Microsoft.AspNetCore.Http;
+using Eateries.Application.Features.Dishes.Commands.CreateDish;
+using Eateries.Application.Features.Dishes.Queries.GetDishById;
+using Eateries.Application.Features.Dishes.Queries.GetDishes;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eateries.WebApi.Controllers.v1
@@ -14,17 +11,17 @@ namespace Eateries.WebApi.Controllers.v1
     {
         // GET: api/Dish
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> GetDishesByFilters([FromQuery] GetDishesQuery filter)
         {
-            return new string[] { "value1", "value2" };
+            return Ok(await Mediator.Send(filter));
         }
 
-        /*// GET: api/Dish/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // GET: api/Dish/5
+        [HttpGet("{id}", Name = "GetDishById")]
+        public async Task<IActionResult> GetDishById(Guid id)
         {
-            return "value";
-        }*/
+            return Ok(await Mediator.Send(new GetDishByIdQuery{ Id = id}));
+        }
 
         // POST: api/Dish
         [HttpPost]
