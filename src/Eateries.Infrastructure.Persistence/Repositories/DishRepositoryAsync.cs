@@ -28,7 +28,7 @@ public class DishRepositoryAsync : GenericRepositoryAsync<Dish>, IDishRepository
         _dataShaper = dataShaper;
     }
 
-    public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedAddressReponseAsync(
+    public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)> GetPagedDishesReponseAsync(
         GetDishesQuery requestParameter)
     {
         var dishName = requestParameter.Name;

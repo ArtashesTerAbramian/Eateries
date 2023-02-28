@@ -3,6 +3,8 @@ using Eateries.Application.Features.Addresses.Commands.CreateAddress;
 using Eateries.Application.Features.Addresses.Queries.GetAddresses;
 using Eateries.Application.Features.Cuisines.Queries.GetCuisines;
 using Eateries.Application.Features.Dishes.Commands.CreateDish;
+using Eateries.Application.Features.Dishes.Queries.GetDishById;
+using Eateries.Application.Features.Dishes.Queries.GetDishes;
 using Eateries.Application.Features.Eateries.Commands.CreateEatery;
 using Eateries.Application.Features.Eateries.Queries.GetEateries;
 using Eateries.Application.Features.Ingredient.Commands.CreateIngredient;
@@ -30,6 +32,8 @@ namespace Eateries.Application.Mappings
             CreateMap<Order, CreateOrderCommand>().ReverseMap();
             CreateMap<Dish, CreateDishCommand>().ReverseMap();
             CreateMap<Ingredient, CreateIngredientCommand>().ReverseMap();
+            CreateMap<Dish, GetDishesViewModel>().ReverseMap();
+            CreateMap<Dish, GetDishByIdViewModel>();
         }
     }
 }

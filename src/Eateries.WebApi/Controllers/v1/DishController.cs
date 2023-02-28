@@ -1,4 +1,5 @@
 using Eateries.Application.Features.Dishes.Commands.CreateDish;
+using Eateries.Application.Features.Dishes.Queries.GetDishById;
 using Eateries.Application.Features.Dishes.Queries.GetDishes;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,12 +16,12 @@ namespace Eateries.WebApi.Controllers.v1
             return Ok(await Mediator.Send(filter));
         }
 
-        /*// GET: api/Dish/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        // GET: api/Dish/5
+        [HttpGet("{id}", Name = "GetDishById")]
+        public async Task<IActionResult> GetDishById(Guid id)
         {
-            return "value";
-        }*/
+            return Ok(await Mediator.Send(new GetDishByIdQuery{ Id = id}));
+        }
 
         // POST: api/Dish
         [HttpPost]

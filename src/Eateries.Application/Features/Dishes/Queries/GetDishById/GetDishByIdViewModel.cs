@@ -1,6 +1,6 @@
-namespace Eateries.Application.Features.Dishes.Queries.GetDishes;
+namespace Eateries.Application.Features.Dishes.Queries.GetDishById;
 
-public class GetDishesViewModel
+public class GetDishByIdViewModel
 {
     public Guid Id { get; set; }
     public string Name { get; set; }

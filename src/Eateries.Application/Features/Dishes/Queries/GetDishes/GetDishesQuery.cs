@@ -40,7 +40,7 @@ public class GetDishesQueryHandler : IRequestHandler<GetDishesQuery, PagedRespon
             validFilter.Fields = _modelHelper.GetModelFields<GetDishesViewModel>();
         }
 
-        var dishEntities = await _dishRepositoryAsync.GetPagedAddressReponseAsync(request);
+        var dishEntities = await _dishRepositoryAsync.GetPagedDishesReponseAsync(request);
         RecordsCount  recordCount = dishEntities.recordsCount;
         var data = dishEntities.data;
         return new
