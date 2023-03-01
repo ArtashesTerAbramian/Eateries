@@ -34,7 +34,7 @@ public class MarkovChainFoodSuggestorService : IMarkovChainFoodSuggestorService
         var suggestedDishes = new List<Dish>();
         for (int i = 0; i < numSuggestions; i++)
         {
-            var nextDishId = GetNextDishId(currentDishId, transitionProbabilities);
+            var nextDishId = await GetNextDishId(currentDishId, transitionProbabilities);
             var nextDish = await _dishRepositoryAsync.GetByIdAsync(nextDishId);
             suggestedDishes.Add(nextDish);
             currentDishId = nextDish.Id;
@@ -82,12 +82,20 @@ public class MarkovChainFoodSuggestorService : IMarkovChainFoodSuggestorService
         return transitionProbabilities;
     }
 
-    private Guid GetNextDishId(Guid currentDishId, Dictionary<Guid, Dictionary<Guid, double>> transitionProbabilities)
+    private async Task<Guid> GetNextDishId(Guid currentDishId, Dictionary<Guid, Dictionary<Guid, double>> transitionProbabilities)
     {
+        var rand = new Random();
+        if (!transitionProbabilities.ContainsKey(currentDishId))
+        {
+            // If the current dish does not have any subsequent dishes, return a random dish from the menu
+            var menu = await _dishRepositoryAsync.GetAllAsync();
+            var randomIndex = rand.Next(menu.Count());
+            return menu.ElementAt(randomIndex).Id;
+        }
+
         var possibleNextDishProbabilities = transitionProbabilities[currentDishId];
 
         // select a next dish based on probabilities
-        var rand = new Random();
         var r = rand.NextDouble();
         var cumulativeProbability = 0.0;
         foreach (var nextDishProbability in possibleNextDishProbabilities)
