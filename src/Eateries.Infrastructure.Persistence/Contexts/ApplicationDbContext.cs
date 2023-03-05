@@ -37,6 +37,7 @@ namespace Eateries.Infrastructure.Persistence.Contexts
         public DbSet<OrderHistory> OrderHistories { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<OrderDish> OrderDishes { get; set; }
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableBaseEntity>())
@@ -217,7 +218,7 @@ namespace Eateries.Infrastructure.Persistence.Contexts
                 .WithMany(o => o.Orders)
                 .HasForeignKey(u => u.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
-            
+
             // Configure cascade delete behavior for entities that have triggers
             modelBuilder.Entity<Order>()
                 .HasMany(o => o.OrderHistories)
@@ -249,7 +250,7 @@ namespace Eateries.Infrastructure.Persistence.Contexts
 
             #endregion
 
-            #region MyRegion
+            #region OrderDish
 
             modelBuilder.Entity<OrderDish>()
                 .HasKey(od => new { od.OrderId, od.DishId });
@@ -263,6 +264,25 @@ namespace Eateries.Infrastructure.Persistence.Contexts
                 .HasOne(od => od.Dish)
                 .WithMany(d => d.OrderDishes)
                 .HasForeignKey(od => od.DishId);
+
+            #endregion
+
+            #region DishGrade
+
+            modelBuilder.Entity<DishGrade>()
+                .HasKey(dg => new { dg.DishId, dg.MenuId });
+
+            modelBuilder.Entity<DishGrade>()
+                .HasOne(o => o.Dish)
+                .WithMany(dg => dg.DishGrades)
+                .HasForeignKey(f => f.DishId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<DishGrade>()
+                .HasOne(m => m.Menu)
+                .WithMany(dg => dg.DishGrades)
+                .HasForeignKey(m => m.MenuId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             #endregion
 

@@ -11,5 +11,6 @@ namespace Eateries.Domain.Entities
         public Eatery Eatery { get; set; }
 
         public List<MenuDish> MenuDishes { get; set; }
+        public List<DishGrade> DishGrades { get; set; }
     }
 }
