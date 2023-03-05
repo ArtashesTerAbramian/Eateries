@@ -21,8 +21,8 @@ public class MarkovChainFoodSuggestorService : IMarkovChainFoodSuggestorService
 
     public async Task<List<Dish>> SuggestFood(Guid userId, int numSuggestions)
     {
-        var orderHistory = await _orderRepositoryAsync.GetOrdersByUserAsync(userId);
-        var dishesOrdered = orderHistory
+        var orders = await _orderRepositoryAsync.GetOrdersByUserIdAsync(userId);
+        var dishesOrdered = orders
             .SelectMany(o => o.OrderDishes.Select(s => s.Dish))
             .ToList();
 
@@ -35,7 +35,7 @@ public class MarkovChainFoodSuggestorService : IMarkovChainFoodSuggestorService
         for (int i = 0; i < numSuggestions; i++)
         {
             var nextDishId = await GetNextDishId(currentDishId, transitionProbabilities);
-            var nextDish = await _dishRepositoryAsync.GetByIdAsync(nextDishId);
+            var nextDish = dishesOrdered.FirstOrDefault(s => s.Id == nextDishId);
             suggestedDishes.Add(nextDish);
             currentDishId = nextDish.Id;
         }

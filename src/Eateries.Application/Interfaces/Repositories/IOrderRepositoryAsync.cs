@@ -5,5 +5,5 @@ namespace Eateries.Application.Interfaces.Repositories;
 
 public interface IOrderRepositoryAsync : IGenericRepositoryAsync<Order>
 {
-    Task<List<Order>> GetOrdersByUserAsync(Guid userId);
+    Task<List<Order>> GetOrdersByUserIdAsync(Guid userId);
 }
