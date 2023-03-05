@@ -27,7 +27,7 @@ public class OrderRepositoryAsync : GenericRepositoryAsync<Order>, IOrderReposit
         _logger = logger;
     }
 
-    public async Task<List<Order>> GetOrdersByUserAsync(Guid userId)
+    public async Task<List<Order>> GetOrdersByUserIdAsync(Guid userId)
     {
         return await _orders
             .Where(o => o.UserId == userId)
