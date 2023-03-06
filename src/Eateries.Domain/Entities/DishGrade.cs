@@ -7,4 +7,5 @@ public class DishGrade
     public Guid MenuId { get; set; }
     public Menu Menu { get; set; }
     public int Grade { get; set; }
+    public string? Comment { get; set; }
 }
