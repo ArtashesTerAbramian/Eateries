@@ -31,6 +31,7 @@ namespace Eateries.WebApi.Controllers.v1
             return CreatedAtAction(nameof(AddMenu), resp);
         }
 
+        /*
         [HttpPut("{id}")]
         public void UpdateMenu(int id, [FromBody] string value)
         {
@@ -39,6 +40,6 @@ namespace Eateries.WebApi.Controllers.v1
         [HttpDelete("{id}")]
         public void DeleteMenu(int id)
         {
-        }
+        }*/
     }
 }

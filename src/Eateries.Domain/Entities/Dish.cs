@@ -26,4 +26,5 @@ public class Dish : AuditableBaseEntity
     public List<MenuDish> MenuDishes { get; set; }
     public List<DishIngredient> DishIngredients { get; set; }
     public List<OrderDish> OrderDishes { get; set; }
+    public List<DishGrade> DishGrades { get; set; }
 }

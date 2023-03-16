@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Eateries.Application.Features.Ingredient.Commands.CreateIngredient;
+using Eateries.Application.Features.DishGrade.Commands.CreateDishGrade;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,38 +11,37 @@ namespace Eateries.WebApi.Controllers.v1
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class IngredientController : BaseApiController
+    public class DishGradeController : BaseApiController
     {
-        // GET: api/Ingredient
+        /*// GET: api/DishGrade
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        /*
-        // GET: api/Ingredient/5
+        // GET: api/DishGrade/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
         }
-        */
 
-        // POST: api/Ingredient
+        // POST: api/DishGrade
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateIngredientCommand command)
+        public void Post([FromBody] string value)
+        {
+        }*/
+
+        // PUT: api/DishGrade/5
+        [HttpPut]
+        public async Task<IActionResult> UpdateDishGrade([FromBody] UpdateDishGradeCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
-        /*// PUT: api/Ingredient/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/Ingredient/5
+        /*
+        // DELETE: api/DishGrade/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

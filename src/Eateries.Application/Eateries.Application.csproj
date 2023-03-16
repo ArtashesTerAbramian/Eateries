@@ -21,6 +21,9 @@
 
   <ItemGroup>
     <Folder Include="Features\Cuisines\Commands" />
+    <Folder Include="Features\DishGrade\Queries" />
+    <Folder Include="Features\DishSuggestion\Commands\" />
+    <Folder Include="Features\DishSuggestion\Queries\" />
     <Folder Include="Features\Ingredient\Queries" />
     <Folder Include="Features\Orders\Queries" />
   </ItemGroup>
