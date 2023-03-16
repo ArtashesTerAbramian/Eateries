@@ -10,24 +10,32 @@ public class MarkovChainFoodSuggestorService : IMarkovChainFoodSuggestorService
 {
     private readonly IOrderRepositoryAsync _orderRepositoryAsync;
     private readonly IDishRepositoryAsync _dishRepositoryAsync;
+    private readonly IMenuDishRepositoryAsync _menuDishRepositoryAsync;
 
     public MarkovChainFoodSuggestorService(
         IOrderRepositoryAsync orderRepositoryAsync,
-        IDishRepositoryAsync dishRepositoryAsync)
+        IDishRepositoryAsync dishRepositoryAsync,
+        IMenuDishRepositoryAsync menuDishRepositoryAsync)
     {
         _orderRepositoryAsync = orderRepositoryAsync;
         _dishRepositoryAsync = dishRepositoryAsync;
+        _menuDishRepositoryAsync = menuDishRepositoryAsync;
     }
 
-    public async Task<List<Dish>> SuggestFood(Guid userId, int numSuggestions)
+    public async Task<List<Dish>> SuggestFood(Guid userId, Guid menuId, int numSuggestions)
     {
         var orders = await _orderRepositoryAsync.GetOrdersByUserIdAsync(userId);
         var dishesOrdered = orders
             .SelectMany(o => o.OrderDishes.Select(s => s.Dish))
             .ToList();
 
+
+        var dishesFromMenu = await _menuDishRepositoryAsync.GetAllDishesForMenu(menuId);
+        
+        var intersectionDishesFromMenu = dishesOrdered.Intersect(dishesFromMenu).ToList();
+
         // calculate frequency of subsequent dishes
-        var transitionProbabilities = CalculateTransitionProbabilities(dishesOrdered);
+        var transitionProbabilities = CalculateTransitionProbabilities(intersectionDishesFromMenu);
 
         // generate food suggestion
         var currentDishId = dishesOrdered.Last().Id;

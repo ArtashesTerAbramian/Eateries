@@ -25,10 +25,19 @@ public class MenuDishRepositoryAsync : GenericRepositoryAsync<MenuDish>, IMenuDi
         _shapeHelper = shapeHelper;
     }
     
-    public async Task<List<MenuDish>> GetMenuDishesByMenuDishIdAsync(Guid menuId, Guid dishId)
+    public async Task<List<MenuDish>> GetMenuDishesByMenuIdAsync(Guid menuId)
     {
         return await _dbContext.MenuDishes
-            .Where(s => s.MenuId == menuId && s.DishId == dishId)
+            .Where(s => s.MenuId == menuId)
             .ToListAsync();
+    }
+    
+    public async Task<List<Dish>> GetAllDishesForMenu(Guid menuId)
+    {
+        return await _dbContext.MenuDishes
+            .Where(md => md.MenuId == menuId)
+            .Select(md => md.Dish)
+            .ToListAsync();
+
     }
 }
