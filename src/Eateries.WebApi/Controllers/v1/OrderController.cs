@@ -13,11 +13,11 @@ namespace Eateries.WebApi.Controllers.v1
     public class OrderController : BaseApiController
     {
         // GET: api/Order
-        [HttpGet]
+        /*[HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
-        }
+        }*/
 
         /*
         // GET: api/Order/5
@@ -35,7 +35,7 @@ namespace Eateries.WebApi.Controllers.v1
             return Ok(await Mediator.Send(command));
         }
 
-        // PUT: api/Order/5
+        /*// PUT: api/Order/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
@@ -45,6 +45,6 @@ namespace Eateries.WebApi.Controllers.v1
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-        }
+        }*/
     }
 }

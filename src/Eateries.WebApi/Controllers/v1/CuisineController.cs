@@ -22,6 +22,7 @@ namespace Eateries.WebApi.Controllers.v1
         }*/
 
         // POST: api/Cuisine
+        /*
         [HttpPost]
         public void AddCuisine([FromBody] string value)
         {
@@ -38,5 +39,6 @@ namespace Eateries.WebApi.Controllers.v1
         public void DeleteCuisine(int id)
         {
         }
+        */
     }
 }

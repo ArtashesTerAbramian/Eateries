@@ -30,7 +30,7 @@ namespace Eateries.WebApi.Controllers.v1
             return Ok(await Mediator.Send(command));
         }
 
-        // PUT: api/Dish/5
+        /*// PUT: api/Dish/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
@@ -40,6 +40,6 @@ namespace Eateries.WebApi.Controllers.v1
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-        }
+        }*/
     }
 }
