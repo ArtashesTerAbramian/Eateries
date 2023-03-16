@@ -30,6 +30,13 @@ namespace Eateries.Infrastructure.Persistence.Repositories
             this._menu = dbContext.Set<Menu>();
         }
 
+        public async Task<Menu> GetMenuById(Guid menuId)
+        {
+            return await _menu.Where(m => m.Id == menuId)
+                .Include(m => m.MenuDishes)
+                .ThenInclude(md => md.Dish)
+                .FirstOrDefaultAsync();
+        }
         public async Task<(IEnumerable<Entity> data, RecordsCount recordsCount)>
                         GetPagedMenuesReponseAsync(GetMenuQuery requestParameter)
         {
