@@ -291,8 +291,8 @@ namespace Eateries.Infrastructure.Persistence.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EateriesDb;" +
-                                        "Integrated Security=True;");
+            optionsBuilder.UseSqlServer("Data Source=Artash-Laptop;Initial Catalog=EateriesDb;Integrated " +
+                                        "Security=True;Encrypt=False;");
             optionsBuilder.UseLoggerFactory(_loggerFactory);
         }
     }

@@ -29,13 +29,13 @@ public class MarkovChainFoodSuggestorService : IMarkovChainFoodSuggestorService
             .SelectMany(o => o.OrderDishes.Select(s => s.Dish))
             .ToList();
 
-
         var dishesFromMenu = await _menuDishRepositoryAsync.GetAllDishesForMenu(menuId);
         
         var intersectionDishesFromMenu = dishesOrdered.Intersect(dishesFromMenu).ToList();
 
         // calculate frequency of subsequent dishes
-        var transitionProbabilities = CalculateTransitionProbabilities(intersectionDishesFromMenu);
+        var transitionProbabilities = 
+                                                    CalculateTransitionProbabilities(intersectionDishesFromMenu);
 
         // generate food suggestion
         var currentDishId = dishesOrdered.Last().Id;
