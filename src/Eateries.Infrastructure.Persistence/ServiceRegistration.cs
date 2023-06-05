@@ -40,6 +40,7 @@ namespace Eateries.Infrastructure.Persistence
             services.AddTransient<IDishRepositoryAsync, DishRepositoryAsync>();
             services.AddTransient<IIngredientRepositoryAsync, IngredientRepositoryAsync>();
             services.AddTransient<IDishGradeRepositoryAsync, DishGradeRepositoryAsync>();
+            services.AddTransient<IMenuDishRepositoryAsync, MenuDishRepositoryAsync>();
             /* services.AddTransient<IPositionRepositoryAsync, PositionRepositoryAsync>();
              services.AddTransient<IEmployeeRepositoryAsync, EmployeeRepositoryAsync>();*/
 

@@ -20,7 +20,7 @@ public class GetMenuByIdQuery : IRequest<Response<Menu>>
         }
         public async Task<Response<Menu>> Handle(GetMenuByIdQuery request, CancellationToken cancellationToken)
         {
-            var menu = await _menuRepositoryAsync.GetByIdAsync(request.Id);
+            var menu = await _menuRepositoryAsync.GetMenuById(request.Id);
             if (menu == null)
             {
                 throw new ApiException("Entity does not found");
